@@ -1,0 +1,504 @@
+schema_version: pd1_binder_interface_v2
+description: 'PD1_b2: 24 interface contacts plus 33 support-shell residues hard-fixed;
+  57 of 114 positions.'
+annotation_provenance:
+  direct_functional_union_uniprot_1b:
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  - 16
+  - 19
+  - 23
+  - 24
+  - 26
+  - 27
+  - 28
+  - 30
+  - 31
+  - 32
+  - 34
+  - 35
+  - 44
+  - 45
+  - 48
+  - 49
+  - 52
+  - 90
+  - 94
+  note: '1-based indices into the 114-aa binder chain (no UniProt entry for a de novo
+    design). This is the 24-residue CONTACT set only, NOT the 57 hard anchors: the
+    33 support-shell residues are frozen for safety, not because they are functional,
+    so cat_max_scRMSD (scripts/refine_rf_designs.py) must be read over the contact
+    set. Without this block refinement would reject a non-_v0 schema outright.'
+lock_set_admissibility:
+  rule: an epitope is removable under this lock set iff >=1 of its P1/P4/P6/P9 anchor
+    pockets (9-mer core offsets 0/3/5/8) is outside hard_anchors
+  checked_epitopes:
+  - allele: HLA-DRB1*04:01
+    core: LDPDSTDPG
+    core_start_0b: 7
+    free_pockets: P4 (idx 10), P6 (idx 12)
+    locked_pockets: P1 (idx 7, shell), P9 (idx 15, contact)
+    verdict: removable
+  - allele: HLA-DRB1*15:01
+    core: LVKYLGISR
+    core_start_0b: 52
+    free_pockets: P6 (idx 57), P9 (idx 60)
+    locked_pockets: P1 (idx 52, shell), P4 (idx 55, shell)
+    verdict: removable
+  - allele: HLA-DRB1*15:01
+    core: PAAYAALAA
+    core_start_0b: 78
+    free_pockets: P1 (idx 78), P4 (idx 81), P6 (idx 83)
+    locked_pockets: P9 (idx 86, shell)
+    verdict: removable
+  verdict: ADMISSIBLE - all three epitopes retain >=2 free anchor pockets
+target_annotation:
+  target: PD1_ECTO_Q15116_33_150
+  uniprot: Q15116
+  construct_1b:
+  - 33
+  - 150
+  target_side_contacts_uniprot_1b:
+  - 62
+  - 63
+  - 64
+  - 66
+  - 75
+  - 78
+  - 83
+  - 85
+  - 86
+  - 87
+  - 88
+  - 126
+  - 128
+  - 129
+  - 130
+  - 131
+  - 132
+  - 133
+  - 134
+  - 135
+  - 136
+  note: The contacted PD-1 face (62-66, 75-78, 83-88, 126-136) is the PD-L1-binding
+    surface, i.e. this binder is PD-L1-competitive.
+structure_provenance:
+  backbone: bound-state binder chain from the top-ranked complex sample
+  rationale: apo and bound cores agree (5-104 Ca RMSD 0.69 A) but the N-terminus 0-9
+    is mobile in apo (intra-apo ensemble spread 1.75 A vs 0.23 A for the complex)
+    and is ordered on binding; anchors 0-4 sit in that segment, so the apo backbone
+    would place 5 of 24 interface residues arbitrarily.
+entries:
+- protein_id: PD1_b2_BINDER
+  hard_anchors:
+  - index_0b: 0
+    expected_aa: R
+    label: R1
+    biological_role: PD-1 interface contact (5/5 samples)
+    source: Protenix local-MSA complex ensemble (5 samples, seed 101), consensus contact
+      <=4.0 A heavy-atom to PD-1 ectodomain Q15116 33-150
+  - index_0b: 1
+    expected_aa: T
+    label: T2
+    biological_role: PD-1 interface contact (5/5 samples)
+    source: Protenix local-MSA complex ensemble (5 samples, seed 101), consensus contact
+      <=4.0 A heavy-atom to PD-1 ectodomain Q15116 33-150
+  - index_0b: 2
+    expected_aa: I
+    label: I3
+    biological_role: PD-1 interface contact (5/5 samples)
+    source: Protenix local-MSA complex ensemble (5 samples, seed 101), consensus contact
+      <=4.0 A heavy-atom to PD-1 ectodomain Q15116 33-150
+  - index_0b: 3
+    expected_aa: D
+    label: D4
+    biological_role: PD-1 interface contact (5/5 samples)
+    source: Protenix local-MSA complex ensemble (5 samples, seed 101), consensus contact
+      <=4.0 A heavy-atom to PD-1 ectodomain Q15116 33-150
+  - index_0b: 4
+    expected_aa: L
+    label: L5
+    biological_role: PD-1 interface contact (5/5 samples)
+    source: Protenix local-MSA complex ensemble (5 samples, seed 101), consensus contact
+      <=4.0 A heavy-atom to PD-1 ectodomain Q15116 33-150
+  - index_0b: 5
+    expected_aa: E
+    label: E6
+    biological_role: PD-1 interface support shell; second shell (<=8.0 A, not in contact)
+      in 0/5 samples
+    source: Protenix local-MSA complex ensemble (5 samples, seed 101), 8.0 A heavy-atom
+      support shell around the PD-1 ectodomain Q15116 33-150 contact set; promoted
+      from monitored_posthoc (v1) to hard anchor (v2)
+  - index_0b: 6
+    expected_aa: S
+    label: S7
+    biological_role: PD-1 interface support shell; second shell (<=8.0 A, not in contact)
+      in 0/5 samples
+    source: Protenix local-MSA complex ensemble (5 samples, seed 101), 8.0 A heavy-atom
+      support shell around the PD-1 ectodomain Q15116 33-150 contact set; promoted
+      from monitored_posthoc (v1) to hard anchor (v2)
+  - index_0b: 7
+    expected_aa: L
+    label: L8
+    biological_role: PD-1 interface support shell; second shell (<=8.0 A, not in contact)
+      in 0/5 samples
+    source: Protenix local-MSA complex ensemble (5 samples, seed 101), 8.0 A heavy-atom
+      support shell around the PD-1 ectodomain Q15116 33-150 contact set; promoted
+      from monitored_posthoc (v1) to hard anchor (v2)
+  - index_0b: 13
+    expected_aa: D
+    label: D14
+    biological_role: PD-1 interface support shell; second shell (<=8.0 A, not in contact)
+      in 2/5 samples
+    source: Protenix local-MSA complex ensemble (5 samples, seed 101), 8.0 A heavy-atom
+      support shell around the PD-1 ectodomain Q15116 33-150 contact set; promoted
+      from monitored_posthoc (v1) to hard anchor (v2)
+  - index_0b: 14
+    expected_aa: P
+    label: P15
+    biological_role: PD-1 interface support shell; second shell (<=8.0 A, not in contact)
+      in 0/5 samples
+    source: Protenix local-MSA complex ensemble (5 samples, seed 101), 8.0 A heavy-atom
+      support shell around the PD-1 ectodomain Q15116 33-150 contact set; promoted
+      from monitored_posthoc (v1) to hard anchor (v2)
+  - index_0b: 15
+    expected_aa: G
+    label: G16
+    biological_role: PD-1 interface contact (4/5 samples)
+    source: Protenix local-MSA complex ensemble (5 samples, seed 101), consensus contact
+      <=4.0 A heavy-atom to PD-1 ectodomain Q15116 33-150
+  - index_0b: 16
+    expected_aa: T
+    label: T17
+    biological_role: PD-1 interface support shell; second shell (<=8.0 A, not in contact)
+      in 0/5 samples
+    source: Protenix local-MSA complex ensemble (5 samples, seed 101), 8.0 A heavy-atom
+      support shell around the PD-1 ectodomain Q15116 33-150 contact set; promoted
+      from monitored_posthoc (v1) to hard anchor (v2)
+  - index_0b: 17
+    expected_aa: R
+    label: R18
+    biological_role: PD-1 interface support shell; second shell (<=8.0 A, not in contact)
+      in 0/5 samples
+    source: Protenix local-MSA complex ensemble (5 samples, seed 101), 8.0 A heavy-atom
+      support shell around the PD-1 ectodomain Q15116 33-150 contact set; promoted
+      from monitored_posthoc (v1) to hard anchor (v2)
+  - index_0b: 18
+    expected_aa: K
+    label: K19
+    biological_role: PD-1 interface contact (3/5 samples)
+    source: Protenix local-MSA complex ensemble (5 samples, seed 101), consensus contact
+      <=4.0 A heavy-atom to PD-1 ectodomain Q15116 33-150
+  - index_0b: 19
+    expected_aa: L
+    label: L20
+    biological_role: PD-1 interface support shell; second shell (<=8.0 A, not in contact)
+      in 1/5 samples
+    source: Protenix local-MSA complex ensemble (5 samples, seed 101), 8.0 A heavy-atom
+      support shell around the PD-1 ectodomain Q15116 33-150 contact set; promoted
+      from monitored_posthoc (v1) to hard anchor (v2)
+  - index_0b: 20
+    expected_aa: V
+    label: V21
+    biological_role: PD-1 interface support shell; second shell (<=8.0 A, not in contact)
+      in 0/5 samples
+    source: Protenix local-MSA complex ensemble (5 samples, seed 101), 8.0 A heavy-atom
+      support shell around the PD-1 ectodomain Q15116 33-150 contact set; promoted
+      from monitored_posthoc (v1) to hard anchor (v2)
+  - index_0b: 21
+    expected_aa: Q
+    label: Q22
+    biological_role: PD-1 interface support shell; second shell (<=8.0 A, not in contact)
+      in 0/5 samples
+    source: Protenix local-MSA complex ensemble (5 samples, seed 101), 8.0 A heavy-atom
+      support shell around the PD-1 ectodomain Q15116 33-150 contact set; promoted
+      from monitored_posthoc (v1) to hard anchor (v2)
+  - index_0b: 22
+    expected_aa: D
+    label: D23
+    biological_role: PD-1 interface contact (5/5 samples)
+    source: Protenix local-MSA complex ensemble (5 samples, seed 101), consensus contact
+      <=4.0 A heavy-atom to PD-1 ectodomain Q15116 33-150
+  - index_0b: 23
+    expected_aa: V
+    label: V24
+    biological_role: PD-1 interface contact (5/5 samples)
+    source: Protenix local-MSA complex ensemble (5 samples, seed 101), consensus contact
+      <=4.0 A heavy-atom to PD-1 ectodomain Q15116 33-150
+  - index_0b: 24
+    expected_aa: M
+    label: M25
+    biological_role: PD-1 interface support shell; second shell (<=8.0 A, not in contact)
+      in 0/5 samples
+    source: Protenix local-MSA complex ensemble (5 samples, seed 101), 8.0 A heavy-atom
+      support shell around the PD-1 ectodomain Q15116 33-150 contact set; promoted
+      from monitored_posthoc (v1) to hard anchor (v2)
+  - index_0b: 25
+    expected_aa: L
+    label: L26
+    biological_role: PD-1 interface contact (5/5 samples)
+    source: Protenix local-MSA complex ensemble (5 samples, seed 101), consensus contact
+      <=4.0 A heavy-atom to PD-1 ectodomain Q15116 33-150
+  - index_0b: 26
+    expected_aa: D
+    label: D27
+    biological_role: PD-1 interface contact (5/5 samples)
+    source: Protenix local-MSA complex ensemble (5 samples, seed 101), consensus contact
+      <=4.0 A heavy-atom to PD-1 ectodomain Q15116 33-150
+  - index_0b: 27
+    expected_aa: L
+    label: L28
+    biological_role: PD-1 interface contact (5/5 samples)
+    source: Protenix local-MSA complex ensemble (5 samples, seed 101), consensus contact
+      <=4.0 A heavy-atom to PD-1 ectodomain Q15116 33-150
+  - index_0b: 28
+    expected_aa: T
+    label: T29
+    biological_role: PD-1 interface support shell; second shell (<=8.0 A, not in contact)
+      in 0/5 samples
+    source: Protenix local-MSA complex ensemble (5 samples, seed 101), 8.0 A heavy-atom
+      support shell around the PD-1 ectodomain Q15116 33-150 contact set; promoted
+      from monitored_posthoc (v1) to hard anchor (v2)
+  - index_0b: 29
+    expected_aa: D
+    label: D30
+    biological_role: PD-1 interface contact (5/5 samples)
+    source: Protenix local-MSA complex ensemble (5 samples, seed 101), consensus contact
+      <=4.0 A heavy-atom to PD-1 ectodomain Q15116 33-150
+  - index_0b: 30
+    expected_aa: M
+    label: M31
+    biological_role: PD-1 interface contact (5/5 samples)
+    source: Protenix local-MSA complex ensemble (5 samples, seed 101), consensus contact
+      <=4.0 A heavy-atom to PD-1 ectodomain Q15116 33-150
+  - index_0b: 31
+    expected_aa: V
+    label: V32
+    biological_role: PD-1 interface contact (5/5 samples)
+    source: Protenix local-MSA complex ensemble (5 samples, seed 101), consensus contact
+      <=4.0 A heavy-atom to PD-1 ectodomain Q15116 33-150
+  - index_0b: 32
+    expected_aa: I
+    label: I33
+    biological_role: PD-1 interface support shell; second shell (<=8.0 A, not in contact)
+      in 0/5 samples
+    source: Protenix local-MSA complex ensemble (5 samples, seed 101), 8.0 A heavy-atom
+      support shell around the PD-1 ectodomain Q15116 33-150 contact set; promoted
+      from monitored_posthoc (v1) to hard anchor (v2)
+  - index_0b: 33
+    expected_aa: R
+    label: R34
+    biological_role: PD-1 interface contact (5/5 samples)
+    source: Protenix local-MSA complex ensemble (5 samples, seed 101), consensus contact
+      <=4.0 A heavy-atom to PD-1 ectodomain Q15116 33-150
+  - index_0b: 34
+    expected_aa: D
+    label: D35
+    biological_role: PD-1 interface contact (5/5 samples)
+    source: Protenix local-MSA complex ensemble (5 samples, seed 101), consensus contact
+      <=4.0 A heavy-atom to PD-1 ectodomain Q15116 33-150
+  - index_0b: 35
+    expected_aa: I
+    label: I36
+    biological_role: PD-1 interface support shell; second shell (<=8.0 A, not in contact)
+      in 0/5 samples
+    source: Protenix local-MSA complex ensemble (5 samples, seed 101), 8.0 A heavy-atom
+      support shell around the PD-1 ectodomain Q15116 33-150 contact set; promoted
+      from monitored_posthoc (v1) to hard anchor (v2)
+  - index_0b: 39
+    expected_aa: K
+    label: K40
+    biological_role: PD-1 interface support shell; second shell (<=8.0 A, not in contact)
+      in 1/5 samples
+    source: Protenix local-MSA complex ensemble (5 samples, seed 101), 8.0 A heavy-atom
+      support shell around the PD-1 ectodomain Q15116 33-150 contact set; promoted
+      from monitored_posthoc (v1) to hard anchor (v2)
+  - index_0b: 40
+    expected_aa: F
+    label: F41
+    biological_role: PD-1 interface support shell; second shell (<=8.0 A, not in contact)
+      in 0/5 samples
+    source: Protenix local-MSA complex ensemble (5 samples, seed 101), 8.0 A heavy-atom
+      support shell around the PD-1 ectodomain Q15116 33-150 contact set; promoted
+      from monitored_posthoc (v1) to hard anchor (v2)
+  - index_0b: 41
+    expected_aa: T
+    label: T42
+    biological_role: PD-1 interface support shell; second shell (<=8.0 A, not in contact)
+      in 0/5 samples
+    source: Protenix local-MSA complex ensemble (5 samples, seed 101), 8.0 A heavy-atom
+      support shell around the PD-1 ectodomain Q15116 33-150 contact set; promoted
+      from monitored_posthoc (v1) to hard anchor (v2)
+  - index_0b: 42
+    expected_aa: D
+    label: D43
+    biological_role: PD-1 interface support shell; second shell (<=8.0 A, not in contact)
+      in 0/5 samples
+    source: Protenix local-MSA complex ensemble (5 samples, seed 101), 8.0 A heavy-atom
+      support shell around the PD-1 ectodomain Q15116 33-150 contact set; promoted
+      from monitored_posthoc (v1) to hard anchor (v2)
+  - index_0b: 43
+    expected_aa: Q
+    label: Q44
+    biological_role: PD-1 interface contact (4/5 samples)
+    source: Protenix local-MSA complex ensemble (5 samples, seed 101), consensus contact
+      <=4.0 A heavy-atom to PD-1 ectodomain Q15116 33-150
+  - index_0b: 44
+    expected_aa: M
+    label: M45
+    biological_role: PD-1 interface contact (5/5 samples)
+    source: Protenix local-MSA complex ensemble (5 samples, seed 101), consensus contact
+      <=4.0 A heavy-atom to PD-1 ectodomain Q15116 33-150
+  - index_0b: 45
+    expected_aa: A
+    label: A46
+    biological_role: PD-1 interface support shell; second shell (<=8.0 A, not in contact)
+      in 0/5 samples
+    source: Protenix local-MSA complex ensemble (5 samples, seed 101), 8.0 A heavy-atom
+      support shell around the PD-1 ectodomain Q15116 33-150 contact set; promoted
+      from monitored_posthoc (v1) to hard anchor (v2)
+  - index_0b: 46
+    expected_aa: E
+    label: E47
+    biological_role: PD-1 interface support shell; second shell (<=8.0 A, not in contact)
+      in 0/5 samples
+    source: Protenix local-MSA complex ensemble (5 samples, seed 101), 8.0 A heavy-atom
+      support shell around the PD-1 ectodomain Q15116 33-150 contact set; promoted
+      from monitored_posthoc (v1) to hard anchor (v2)
+  - index_0b: 47
+    expected_aa: N
+    label: N48
+    biological_role: PD-1 interface contact (5/5 samples)
+    source: Protenix local-MSA complex ensemble (5 samples, seed 101), consensus contact
+      <=4.0 A heavy-atom to PD-1 ectodomain Q15116 33-150
+  - index_0b: 48
+    expected_aa: F
+    label: F49
+    biological_role: PD-1 interface contact (5/5 samples)
+    source: Protenix local-MSA complex ensemble (5 samples, seed 101), consensus contact
+      <=4.0 A heavy-atom to PD-1 ectodomain Q15116 33-150
+  - index_0b: 49
+    expected_aa: A
+    label: A50
+    biological_role: PD-1 interface support shell; second shell (<=8.0 A, not in contact)
+      in 0/5 samples
+    source: Protenix local-MSA complex ensemble (5 samples, seed 101), 8.0 A heavy-atom
+      support shell around the PD-1 ectodomain Q15116 33-150 contact set; promoted
+      from monitored_posthoc (v1) to hard anchor (v2)
+  - index_0b: 50
+    expected_aa: N
+    label: N51
+    biological_role: PD-1 interface support shell; second shell (<=8.0 A, not in contact)
+      in 0/5 samples
+    source: Protenix local-MSA complex ensemble (5 samples, seed 101), 8.0 A heavy-atom
+      support shell around the PD-1 ectodomain Q15116 33-150 contact set; promoted
+      from monitored_posthoc (v1) to hard anchor (v2)
+  - index_0b: 51
+    expected_aa: L
+    label: L52
+    biological_role: PD-1 interface contact (5/5 samples)
+    source: Protenix local-MSA complex ensemble (5 samples, seed 101), consensus contact
+      <=4.0 A heavy-atom to PD-1 ectodomain Q15116 33-150
+  - index_0b: 52
+    expected_aa: L
+    label: L53
+    biological_role: PD-1 interface support shell; second shell (<=8.0 A, not in contact)
+      in 0/5 samples
+    source: Protenix local-MSA complex ensemble (5 samples, seed 101), 8.0 A heavy-atom
+      support shell around the PD-1 ectodomain Q15116 33-150 contact set; promoted
+      from monitored_posthoc (v1) to hard anchor (v2)
+  - index_0b: 55
+    expected_aa: Y
+    label: Y56
+    biological_role: PD-1 interface support shell; second shell (<=8.0 A, not in contact)
+      in 0/5 samples
+    source: Protenix local-MSA complex ensemble (5 samples, seed 101), 8.0 A heavy-atom
+      support shell around the PD-1 ectodomain Q15116 33-150 contact set; promoted
+      from monitored_posthoc (v1) to hard anchor (v2)
+  - index_0b: 67
+    expected_aa: L
+    label: L68
+    biological_role: PD-1 interface support shell; second shell (<=8.0 A, not in contact)
+      in 0/5 samples
+    source: Protenix local-MSA complex ensemble (5 samples, seed 101), 8.0 A heavy-atom
+      support shell around the PD-1 ectodomain Q15116 33-150 contact set; promoted
+      from monitored_posthoc (v1) to hard anchor (v2)
+  - index_0b: 82
+    expected_aa: A
+    label: A83
+    biological_role: PD-1 interface support shell; second shell (<=8.0 A, not in contact)
+      in 0/5 samples
+    source: Protenix local-MSA complex ensemble (5 samples, seed 101), 8.0 A heavy-atom
+      support shell around the PD-1 ectodomain Q15116 33-150 contact set; promoted
+      from monitored_posthoc (v1) to hard anchor (v2)
+  - index_0b: 85
+    expected_aa: A
+    label: A86
+    biological_role: PD-1 interface support shell; second shell (<=8.0 A, not in contact)
+      in 0/5 samples
+    source: Protenix local-MSA complex ensemble (5 samples, seed 101), 8.0 A heavy-atom
+      support shell around the PD-1 ectodomain Q15116 33-150 contact set; promoted
+      from monitored_posthoc (v1) to hard anchor (v2)
+  - index_0b: 86
+    expected_aa: A
+    label: A87
+    biological_role: PD-1 interface support shell; second shell (<=8.0 A, not in contact)
+      in 0/5 samples
+    source: Protenix local-MSA complex ensemble (5 samples, seed 101), 8.0 A heavy-atom
+      support shell around the PD-1 ectodomain Q15116 33-150 contact set; promoted
+      from monitored_posthoc (v1) to hard anchor (v2)
+  - index_0b: 88
+    expected_aa: F
+    label: F89
+    biological_role: PD-1 interface support shell; second shell (<=8.0 A, not in contact)
+      in 0/5 samples
+    source: Protenix local-MSA complex ensemble (5 samples, seed 101), 8.0 A heavy-atom
+      support shell around the PD-1 ectodomain Q15116 33-150 contact set; promoted
+      from monitored_posthoc (v1) to hard anchor (v2)
+  - index_0b: 89
+    expected_aa: R
+    label: R90
+    biological_role: PD-1 interface contact (5/5 samples)
+    source: Protenix local-MSA complex ensemble (5 samples, seed 101), consensus contact
+      <=4.0 A heavy-atom to PD-1 ectodomain Q15116 33-150
+  - index_0b: 90
+    expected_aa: A
+    label: A91
+    biological_role: PD-1 interface support shell; second shell (<=8.0 A, not in contact)
+      in 0/5 samples
+    source: Protenix local-MSA complex ensemble (5 samples, seed 101), 8.0 A heavy-atom
+      support shell around the PD-1 ectodomain Q15116 33-150 contact set; promoted
+      from monitored_posthoc (v1) to hard anchor (v2)
+  - index_0b: 92
+    expected_aa: V
+    label: V93
+    biological_role: PD-1 interface support shell; second shell (<=8.0 A, not in contact)
+      in 0/5 samples
+    source: Protenix local-MSA complex ensemble (5 samples, seed 101), 8.0 A heavy-atom
+      support shell around the PD-1 ectodomain Q15116 33-150 contact set; promoted
+      from monitored_posthoc (v1) to hard anchor (v2)
+  - index_0b: 93
+    expected_aa: R
+    label: R94
+    biological_role: PD-1 interface contact (5/5 samples)
+    source: Protenix local-MSA complex ensemble (5 samples, seed 101), consensus contact
+      <=4.0 A heavy-atom to PD-1 ectodomain Q15116 33-150
+  - index_0b: 94
+    expected_aa: E
+    label: E95
+    biological_role: PD-1 interface support shell; second shell (<=8.0 A, not in contact)
+      in 0/5 samples
+    source: Protenix local-MSA complex ensemble (5 samples, seed 101), 8.0 A heavy-atom
+      support shell around the PD-1 ectodomain Q15116 33-150 contact set; promoted
+      from monitored_posthoc (v1) to hard anchor (v2)
+  - index_0b: 96
+    expected_aa: M
+    label: M97
+    biological_role: PD-1 interface support shell; second shell (<=8.0 A, not in contact)
+      in 0/5 samples
+    source: Protenix local-MSA complex ensemble (5 samples, seed 101), 8.0 A heavy-atom
+      support shell around the PD-1 ectodomain Q15116 33-150 contact set; promoted
+      from monitored_posthoc (v1) to hard anchor (v2)

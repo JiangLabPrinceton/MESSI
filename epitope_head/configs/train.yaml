@@ -1,0 +1,61 @@
+# Epitope Head v0 — Training Config
+# Frozen decisions per PLAN.md Task E0 and codemap §8.3
+
+train:
+  # Negative sampling
+  neg_ratio: 7
+  # Wave-4: widened so the candidate set carries a GRADED IoU-to-GT spectrum
+  # spanning the IoU>=0.70 evaluation band, so the window IoU-ranking loss has
+  # graded pairs to rank. Empirically swept (sample_negatives + max_iou_per_window
+  # over 200 real proteins): 0.95 / offset 5 / hard_frac 0.5 gives a smooth
+  # spread (~48% <0.5, ~21% [0.5,0.7), ~27% [0.7,0.9), ~4% [0.9,1.0)) with no
+  # mid-band gap; offset 2 collapses [0.5,0.7) (bimodal), offset 20 dilutes the
+  # high band. Strict-mode verified: 0 shortfall over all 1308 proteins.
+  # Applies uniformly to all arms (A0/A1/A2), so the internal comparison holds.
+  hard_negative_fraction: 0.5
+  hard_neg_max_overlap_ratio: 0.95
+  hard_neg_offset_range: 5
+  neg_length_sampling: match_positive  # match_positive | uniform
+
+  # Loss
+  loss:
+    tau: 1.0            # temperature handled by learnable logit_scale; keep tau=1.0 (neutral)
+    T_mp: 0.1           # multi-positive temperature (independent from tau)
+    lambda_mp: 0.0      # multi-positive weight (disabled in v0)
+    lambda_smooth: 0.0  # hotspot smoothness regularizer (disabled in v0)
+    objective_mode: infonce  # infonce | mixed_margin | margin_only
+    margin_m: 0.5       # margin threshold for hard-example loss
+    hard_topk: 8        # number of hardest negatives per positive
+    lambda_margin: 0.5  # weight for margin term in mixed_margin mode
+
+  # Optimization
+  lr: 5.0e-4
+  weight_decay: 1.0e-3
+  optimizer: adamw
+  scheduler: cosine     # cosine | linear | constant
+  warmup_steps: 500
+  max_epochs: 50
+  grad_clip: 1.0
+
+  # Batching
+  max_tokens: 4096      # token-budget dynamic batching
+  num_workers: 4
+
+  # Reproducibility
+  seed: 42
+  deterministic: false   # if true, use deterministic CUDA ops (slower)
+
+  # Checkpointing
+  checkpoint_every_n_epochs: 5
+  early_stopping_patience: 15
+  monitor_metric: pp_auc
+
+  # Long-protein chunking (v1.1)
+  chunking:
+    enabled: true
+    context_len: 1022    # ESM-2 max residues (1024 tokens - BOS - EOS)
+    stride: 512
+    margin: 32           # M >= kmax + 2 = 27
+    stitch_mode: per_residue_stitch   # per_residue_stitch | center_weighted
+    window_mode: per_residue_stitch   # per_residue_stitch | per_window_single_chunk
+    enable_reliability: true

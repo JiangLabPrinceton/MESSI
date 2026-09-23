@@ -1,0 +1,65 @@
+train:
+  ablation_encoder_id: LC1
+  checkpoint_every_n_epochs: 5
+  chunking:
+    context_len: 1022
+    enable_reliability: true
+    enabled: true
+    margin: 32
+    stitch_mode: per_residue_stitch
+    stride: 512
+    window_mode: per_residue_stitch
+  deterministic: false
+  diff_ids_applied:
+  - d001
+  - d002
+  early_stopping_patience: 26
+  grad_clip: 1.0
+  hard_neg_max_overlap_ratio: 0.95
+  hard_neg_offset_range: 5
+  hard_negative_fraction: 0.5
+  loss:
+    T_mp: 0.1
+    hard_topk: 4
+    iou_rank_margin: 0.5
+    iou_rank_min_gap: 0.1
+    lambda_iou_rank: 1.0
+    lambda_margin: 0.1
+    lambda_mp: 0.0
+    lambda_smooth: 0.0
+    margin_m: 0.5
+    objective_mode: mixed_margin
+    tau: 1.0
+  lr: 0.0005
+  manifest_version: v1.1
+  max_epochs: 25
+  max_tokens: 4096
+  monitor_metric: pp_ap
+  near_positive:
+    apply_to_residue_labels: false
+    apply_to_span_negatives: false
+    enabled: false
+    metric: endpoint_gap
+    near_gap_max: 10
+    schedule: ignore
+    schedule_params: {}
+  neg_length_sampling: match_positive
+  neg_ratio: 7
+  num_workers: 4
+  optimizer: adamw
+  residue:
+    aggregation: log_mean_exp
+    aggregation_params:
+      beta: 4.0
+    enabled: true
+    label_mode: binary_coverage
+    lambda_residue: 0.3
+    loss_mode: pairwise_margin
+    margin_m_residue: 0.5
+    max_windows_per_chunk: 1024
+    min_far_bg_residues: 4
+    window_mode: sampled
+  scheduler: cosine
+  seed: 42
+  warmup_steps: 500
+  weight_decay: 0.001

@@ -1,0 +1,31 @@
+# Reference-flow sampler config for the remask probe (clean no-remask substrate).
+# Mirrors the rankface / commit_gate sampler settings (constant_one amplification,
+# linear schedule, remask.enabled=true, n_steps=100) but sets
+#   sampler.remask.fraction_scale = 0.0
+# so ZERO positions are re-masked while the controller post_step / telemetry path
+# still runs (enabled stays true). This isolates the remask attractor cleanly:
+# `remask.enabled=false` would also skip controller.post_step (sampler.py:243/512),
+# conflating "no remask" with "no controller post-step lifecycle".
+#
+# Used as --config (CONFIG_PATH) for BOTH remask-probe arms:
+#   arm 2 (RF clean-no-remask): + --controller-config d2_d3_full_stageB_highrisk_remaskprobe_shift30.yaml
+#   arm 3 (DPLM substrate):     no --controller-config
+# See d2_d3_full_stageB_highrisk_remaskprobe_README.md.
+#
+# fraction_scale=1.0 (default) is byte-identical to the legacy remask; 0.0 = no remask.
+sampler:
+  n_steps: 100
+  seed: 42
+  temperature: 1.0
+  n_designs_per_protein: 2
+  remask:
+    enabled: true
+    fraction_scale: 0.0
+schedule:
+  base_form: linear
+amplification:
+  form: constant_one
+  h_source: h_processed
+  g_max_cap: 20.0
+h_shuffle:
+  enabled: false

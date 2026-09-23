@@ -1,0 +1,29 @@
+# Wave-4 Round-2: A1 + lambda_residue 0.1 -> 0.3 (lambda_iou_rank stays 1.0).
+# The residue landscape is the downstream-PRIMARY metric and A1's lambda_iou:
+# lambda_residue is 10:1; upweight the landscape term and check it lifts
+# Pearson/ResAP without eroding the region IoU gains.
+train:
+  near_positive:
+    enabled: false
+    near_gap_max: 10
+    schedule: ignore
+    schedule_params: {}
+    metric: endpoint_gap
+    apply_to_span_negatives: false
+    apply_to_residue_labels: false
+  residue:
+    enabled: true
+    lambda_residue: 0.3
+    label_mode: binary_coverage
+    aggregation: log_mean_exp
+    aggregation_params:
+      beta: 4.0
+    loss_mode: pairwise_margin
+    margin_m_residue: 0.5
+    window_mode: sampled
+    max_windows_per_chunk: 1024
+    min_far_bg_residues: 4
+  loss:
+    lambda_iou_rank: 1.0
+    iou_rank_margin: 0.5
+    iou_rank_min_gap: 0.1

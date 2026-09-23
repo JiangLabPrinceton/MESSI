@@ -1,0 +1,15 @@
+sampler:
+  n_steps: 100
+  seed: 42
+  temperature: 1.0
+  n_designs_per_protein: 1
+  remask:
+    enabled: true
+schedule:
+  base_form: linear
+amplification:
+  form: constant_one
+  h_source: h_processed
+  g_max_cap: 20.0
+h_shuffle:
+  enabled: false

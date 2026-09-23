@@ -1,0 +1,25 @@
+# Epitope Head v0 — Model Config
+# Frozen decisions per PLAN.md Task E0 and codemap §6, §8.2
+
+model:
+  # Encoder (frozen in v0)
+  encoder_name: esm2_t33_650M_UR50D
+  freeze_encoder: true
+  d_enc: 1280  # ESM-2 650M hidden dim
+
+  # Projection
+  d_proj: 128
+
+  # Span feature components
+  length_embedding_dim: 16
+  allele_embedding_dim: 16   # v0 placeholder: single entry
+  scorer_hidden_dim: 256
+  scorer_activation: gelu
+  scorer_dropout: 0.3
+  logit_scale_init: 10.0          # initial learnable logit scale (CLIP-style)
+  logit_scale_max: 20.0           # upper clamp for logit scale
+  projection_layer_norm: true
+
+  # Boundary pad initialization
+  pad_left_init: zeros
+  pad_right_init: zeros

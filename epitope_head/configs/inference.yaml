@@ -1,0 +1,22 @@
+# Epitope Head v1.1 — Inference Config
+
+inference:
+  checkpoint_path: outputs/checkpoints/best.pt
+  min_k: 12
+  max_k: 25
+
+  # hotspot post-process controls
+  hotspot_center_method: median   # median | mean | none
+  hotspot_clamp: none             # softplus | relu | none
+
+  # runtime/device
+  device: cpu
+
+  # long-protein path (aligned with chunking v1.1)
+  chunking:
+    enabled: true
+    context_len: 1022
+    stride: 512
+    margin: 32
+    stitch_mode: per_residue_stitch   # per_residue_stitch | center_weighted
+    enable_reliability: true

@@ -1,0 +1,313 @@
+{
+  "schema_version": "messi-release-recipe/1",
+  "purpose": "single_allele_unconstrained_official",
+  "template": "examples/messi_official.template.yaml",
+  "profile": "highrisk_d4_k12_r40",
+  "substrate": {
+    "amplification_form": "constant_one",
+    "controller_enabled": false,
+    "n_steps": 100,
+    "remask_enabled": true,
+    "remask_fraction_scale": 0.0,
+    "rf_config_label": "v2_null_no_remask",
+    "temperature": 1.0
+  },
+  "schedule": {
+    "active_population_width": 1,
+    "coordinate_law": "progressive_checkpoint",
+    "depth_cap": 4,
+    "min_lookahead_tail_steps": 10,
+    "points": [
+      {
+        "band_key": "step40",
+        "c_next_step": 60,
+        "c_source_step": 50,
+        "depth": 0,
+        "n_lookaheads": 12,
+        "r_step": 40
+      },
+      {
+        "band_key": "step40",
+        "c_next_step": 70,
+        "c_source_step": 60,
+        "depth": 1,
+        "n_lookaheads": 12,
+        "r_step": 40
+      },
+      {
+        "band_key": "step40",
+        "c_next_step": 80,
+        "c_source_step": 70,
+        "depth": 2,
+        "n_lookaheads": 12,
+        "r_step": 40
+      },
+      {
+        "band_key": "step40",
+        "c_next_step": 90,
+        "c_source_step": 80,
+        "depth": 3,
+        "n_lookaheads": 12,
+        "r_step": 40
+      }
+    ],
+    "schedule_id": "highrisk-d4-k12-r40-global-v2"
+  },
+  "structure_gate": {
+    "active_site_metric": "none",
+    "scTM_min": 0.7
+  },
+  "output_selection": {
+    "final_candidates_per_protein": 8,
+    "mode": "feasible_immune_pareto",
+    "official": true
+  },
+  "alleles": {
+    "0701": {
+      "profile": "highrisk_d4_k12_r40",
+      "root_seeds": [
+        20260811,
+        20260812,
+        20260813,
+        20260814
+      ],
+      "caps": {
+        "max_definitive_refolds": 64,
+        "max_gpu_seconds": 86400,
+        "max_head_calls": 6000,
+        "max_logical_dfe": 2200,
+        "max_retries": 0,
+        "max_walltime_s": 21600,
+        "retry_scope": "per_request"
+      },
+      "source_config_sha256": "3e291385af92ff87458800f58ae81655807d2138e01eff597fe2586e506bbd06",
+      "head": {
+        "allele": "DRB1_0701",
+        "score_scale": "raw_logit",
+        "window_k_max": 25,
+        "window_k_min": 12
+      },
+      "head_checkpoint_sha256": "144ae7c808e9c69aa9efad523957a16579045017d1f8192bd97720947cbdc163",
+      "head_directed": {
+        "band_center_rule": "midpoint_tie_low",
+        "control_policy_id": "source_geometry_control",
+        "control_policy_version": "v1",
+        "donor_improvement_epsilon": {
+          "artifact": {
+            "allele": "DRB1_0701",
+            "calibration_data_digest": "d40d937eb7798bc3ab5c4a038621dc94b84473e3d1b9d9fe1082df2c6258c595",
+            "measurement_kind": "frozen_head_repeatability",
+            "n_observations": 1644,
+            "schema_version": "v2-policy-calibration-1",
+            "score_scale": "raw_logit"
+          },
+          "source_id": "v2f5a-frozen-head-repeatability-difference-bound-v1",
+          "source_kind": "measured_calibration",
+          "source_ref": "70ca8e68a4b7bc3c7727583db34de02d6e4bebb922a8d5e26a8f562c739c620c",
+          "unit": "raw_logit",
+          "value": 1.9073486328125e-06
+        },
+        "lineage_incumbent_depth0_rule": "best_admissible_depth0",
+        "lineage_incumbent_update_law": "strict_improvement_by_epsilon",
+        "local_contribution_tolerance": {
+          "artifact": {
+            "allele": "DRB1_0701",
+            "calibration_data_digest": "d40d937eb7798bc3ab5c4a038621dc94b84473e3d1b9d9fe1082df2c6258c595",
+            "measurement_kind": "frozen_head_repeatability",
+            "n_observations": 1644,
+            "schema_version": "v2-policy-calibration-1",
+            "score_scale": "raw_logit"
+          },
+          "source_id": "v2f5a-local-contribution-repeatability-difference-bound-v1",
+          "source_kind": "measured_calibration",
+          "source_ref": "73d4782a61f6ff408ddf9a14b32d1ee97eb332d519256f483f4cf949a4179d5a",
+          "unit": "raw_logit",
+          "value": 1.9073486328125e-06
+        },
+        "max_counterfactual_head_calls_per_cycle": 483,
+        "reopen_count_law": "u_target_minus_u_src_plus_m_write",
+        "reopen_priority_law": "new_hotspot>worsened>residual_burden>active_uncertainty>temporal_instability>index",
+        "write_candidate_window_rule": "raw_aligned_window_improved_in_donor",
+        "write_cap_editable_fraction": {
+          "artifact": {
+            "allele": "DRB1_0701",
+            "calibration_data_digest": "581ede97d48c7cd5a91b2bbc6c6b456f4aa0ee655cdc4de9f300acbd92c4f487",
+            "measurement_kind": "frozen_declared_fraction",
+            "n_observations": 1,
+            "schema_version": "v2-policy-calibration-1",
+            "score_scale": "raw_logit"
+          },
+          "source_id": "v2f5a-write-cap-0.05-v1",
+          "source_kind": "runbook_frozen",
+          "source_ref": "572b98329d4fd9c7355e907a292888170c9f9e3c1f1a56b8be2fd7b5a4701245",
+          "unit": "editable_fraction",
+          "value": 0.05
+        }
+      }
+    },
+    "0401": {
+      "profile": "highrisk_d4_k12_r40",
+      "root_seeds": [
+        20260811,
+        20260812,
+        20260813,
+        20260814
+      ],
+      "caps": {
+        "max_definitive_refolds": 64,
+        "max_gpu_seconds": 86400,
+        "max_head_calls": 6000,
+        "max_logical_dfe": 2200,
+        "max_retries": 0,
+        "max_walltime_s": 21600,
+        "retry_scope": "per_request"
+      },
+      "source_config_sha256": "3bcda4cb51f7c5a4491b7814fa3cc24e82628c4149ba7b8bc740b242ec4f053d",
+      "head": {
+        "allele": "DRB1_0401",
+        "score_scale": "raw_logit",
+        "window_k_max": 25,
+        "window_k_min": 12
+      },
+      "head_checkpoint_sha256": "12e8018fed5a9255e5e467811cd8c8b4520fd1ab7cdad281d93c75472b6ffb23",
+      "head_directed": {
+        "band_center_rule": "midpoint_tie_low",
+        "control_policy_id": "source_geometry_control",
+        "control_policy_version": "v1",
+        "donor_improvement_epsilon": {
+          "artifact": {
+            "allele": "DRB1_0401",
+            "calibration_data_digest": "e86516cf92e1a0e2077d378bbd44d119b91b51d120741e73b5e3c3085e52aa2b",
+            "measurement_kind": "frozen_head_repeatability",
+            "n_observations": 16,
+            "schema_version": "v2-policy-calibration-1",
+            "score_scale": "raw_logit"
+          },
+          "source_id": "v2-fast0401-donor-stopping-0.005-v1",
+          "source_kind": "runbook_frozen",
+          "source_ref": "fc4bb7871241d29c4252e35740ce6634f9bd5e472148874a9dea6ad4c26f1f67",
+          "unit": "raw_logit",
+          "value": 0.005
+        },
+        "lineage_incumbent_depth0_rule": "best_admissible_depth0",
+        "lineage_incumbent_update_law": "strict_improvement_by_epsilon",
+        "local_contribution_tolerance": {
+          "artifact": {
+            "allele": "DRB1_0401",
+            "calibration_data_digest": "e86516cf92e1a0e2077d378bbd44d119b91b51d120741e73b5e3c3085e52aa2b",
+            "measurement_kind": "frozen_head_repeatability",
+            "n_observations": 16,
+            "schema_version": "v2-policy-calibration-1",
+            "score_scale": "raw_logit"
+          },
+          "source_id": "v2-fast0401-local-tolerance-0.017012596130371094-v1",
+          "source_kind": "runbook_frozen",
+          "source_ref": "cfb83307ca702736ffc3e50eff7c4e8d8e04bd299133c4c904e94a494ae4b2f8",
+          "unit": "raw_logit",
+          "value": 0.017012596130371094
+        },
+        "max_counterfactual_head_calls_per_cycle": 499,
+        "reopen_count_law": "u_target_minus_u_src_plus_m_write",
+        "reopen_priority_law": "new_hotspot>worsened>residual_burden>active_uncertainty>temporal_instability>index",
+        "write_candidate_window_rule": "raw_aligned_window_improved_in_donor",
+        "write_cap_editable_fraction": {
+          "artifact": {
+            "allele": "DRB1_0401",
+            "calibration_data_digest": "f96a964de02d293f9a7b6511307e27ab381f89c9823f65199677dfa0ca5fcc4a",
+            "measurement_kind": "frozen_declared_fraction",
+            "n_observations": 1,
+            "schema_version": "v2-policy-calibration-1",
+            "score_scale": "raw_logit"
+          },
+          "source_id": "v2f5a-write-cap-0.05-v1",
+          "source_kind": "runbook_frozen",
+          "source_ref": "843c628e3a8df26633c91ccd171b021d712f3ed99143d3873dc3e886927ce7ce",
+          "unit": "editable_fraction",
+          "value": 0.05
+        }
+      }
+    },
+    "1501": {
+      "profile": "highrisk_d4_k12_r40",
+      "root_seeds": [
+        20260811,
+        20260812,
+        20260813,
+        20260814
+      ],
+      "caps": {
+        "max_definitive_refolds": 64,
+        "max_gpu_seconds": 86400,
+        "max_head_calls": 6000,
+        "max_logical_dfe": 2200,
+        "max_retries": 0,
+        "max_walltime_s": 21600,
+        "retry_scope": "per_request"
+      },
+      "source_config_sha256": "09090debef46ae56a524997c136422522319eef8befed766a460c3df410fe9e3",
+      "head": {
+        "allele": "DRB1_1501",
+        "score_scale": "raw_logit",
+        "window_k_max": 25,
+        "window_k_min": 12
+      },
+      "head_checkpoint_sha256": "1ff54085f2cde1ea0847ebca567af49b2ca85cd23e730d21d515bbb02896136b",
+      "head_directed": {
+        "band_center_rule": "midpoint_tie_low",
+        "control_policy_id": "source_geometry_control",
+        "control_policy_version": "v1",
+        "donor_improvement_epsilon": {
+          "artifact": {
+            "allele": "DRB1_1501",
+            "calibration_data_digest": "feea6bab0ae4ecff1cd5d547596886fbf654c4e2a174f1fce00d0e5f5e471c82",
+            "measurement_kind": "frozen_head_repeatability",
+            "n_observations": 6,
+            "schema_version": "v2-policy-calibration-1",
+            "score_scale": "raw_logit"
+          },
+          "source_id": "uricase-core0-pilot-donor-stopping-0.005-v1",
+          "source_kind": "runbook_frozen",
+          "source_ref": "6af86a2b4e8276785c21a8c5b052cd2bcd9b2c6db79a8d51e45f1df44cdeec0a",
+          "unit": "raw_logit",
+          "value": 0.005
+        },
+        "lineage_incumbent_depth0_rule": "best_admissible_depth0",
+        "lineage_incumbent_update_law": "strict_improvement_by_epsilon",
+        "local_contribution_tolerance": {
+          "artifact": {
+            "allele": "DRB1_1501",
+            "calibration_data_digest": "feea6bab0ae4ecff1cd5d547596886fbf654c4e2a174f1fce00d0e5f5e471c82",
+            "measurement_kind": "frozen_head_repeatability",
+            "n_observations": 6,
+            "schema_version": "v2-policy-calibration-1",
+            "score_scale": "raw_logit"
+          },
+          "source_id": "uricase-core0-pilot-local-tolerance-0.017012596130371094-v1",
+          "source_kind": "runbook_frozen",
+          "source_ref": "060bc6a1356bbeca30cc585008949c7a1defec6278278bd89554ed0762eecc7b",
+          "unit": "raw_logit",
+          "value": 0.017012596130371094
+        },
+        "max_counterfactual_head_calls_per_cycle": 486,
+        "reopen_count_law": "u_target_minus_u_src_plus_m_write",
+        "reopen_priority_law": "new_hotspot>worsened>residual_burden>active_uncertainty>temporal_instability>index",
+        "write_candidate_window_rule": "raw_aligned_window_improved_in_donor",
+        "write_cap_editable_fraction": {
+          "artifact": {
+            "allele": "DRB1_1501",
+            "calibration_data_digest": "581ede97d48c7cd5a91b2bbc6c6b456f4aa0ee655cdc4de9f300acbd92c4f487",
+            "measurement_kind": "frozen_declared_fraction",
+            "n_observations": 1,
+            "schema_version": "v2-policy-calibration-1",
+            "score_scale": "raw_logit"
+          },
+          "source_id": "v2f5a-write-cap-0.05-v1",
+          "source_kind": "runbook_frozen",
+          "source_ref": "71b8bd2ee05715b227fb24a10555872dedf63787c66874e04bfa6e56b842f534",
+          "unit": "editable_fraction",
+          "value": 0.05
+        }
+      }
+    }
+  }
+}

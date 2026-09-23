@@ -1,0 +1,1515 @@
+schema_version: uricase_active15_core_release_v1
+description: Near-WT P25689 core-release manifest for HLA-DRB1_15_01; all safe P1/P4/P6/P9 anchors are editable
+annotation_provenance:
+  claim_boundary: openable_not_resolved
+  gate_policy: C80_or_eligible_sigma80_or_full5_or_functional_analog_or_ddg_ge1_reu_or_scanned_AGP_or_scanned_disulfide_CYS
+  anchor_registers:
+  - P1
+  - P4
+  - P6
+  - P9
+  functional_analog_hard_lock: true
+  n_functional_analog_locks: 9
+  direct_functional_union_uniprot_1b:
+  - 23
+  - 68
+  - 69
+  - 170
+  - 187
+  - 235
+  - 236
+  - 262
+  - 264
+  direct_functional_released_uniprot_1b: []
+  numbering_contract: index_0b == UniProt_position-1 == full-length_1b-1; for a parent whose initiator Met is excised the
+    same integer equals the mature-frame 1-based author residue id
+  source_hashes:
+    parent_position_evidence.parquet: 34e42d003324c754033c8cef8b0354bd34ab390bdb9e6fe09a6562cc8e001e9f
+    epitope_core_position_evidence.parquet: 51da986447293404c89c3a56470b5e2bce21cf868c05d696ea35e80011ab9bed
+    join_metadata.json: d4657307cc844216ff7459a7697d14d0f86eca43d652c12021fbf0a22608e45d
+entries:
+- protein_id: P25689
+  sequence_md5: 9d6afb9a31c31f35abf0aefea9a6e5b3
+  source_sequence: MADYHNNYKKNDELEFVRTGYGKDMVKVLHIQRDGKYHSIKEVATSVQLTLSSKKDYLHGDNSDIIPTDTIKNTVHVLAKFKGIKSIEAFGVNICEYFLSSFNHVIRAQVYVEEIPWKRLEKNGVKHVHAFIHTPTGTHFCEVEQLRSGPPVIHSGIKDLKVLKTTQSGFEGFIKDQFTTLPEVKDRCFATQVYCKWRYHQCRDVDFEATWGTIRDLVLEKFAGPYDKGEYSPSVQKTLYDIQVLSLSRVPEIEDMEISLPNIHYFNIDMSKMGLINKEEVLLPLDNPYGKITGTVKRKLSSRL
+  allele: HLA-DRB1_15_01
+  free_positions_0b:
+  - 77
+  - 82
+  - 83
+  - 85
+  - 86
+  - 88
+  - 91
+  - 94
+  - 262
+  - 265
+  - 270
+  - 284
+  openable_core_starts_0b:
+  - 77
+  - 80
+  - 83
+  - 86
+  - 262
+  - 281
+  hard_anchors:
+  - index_0b: 0
+    expected_aa: M
+    label: WT_lock_1
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 1
+    expected_aa: A
+    label: WT_lock_2
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 2
+    expected_aa: D
+    label: WT_lock_3
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 3
+    expected_aa: Y
+    label: WT_lock_4
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 4
+    expected_aa: H
+    label: WT_lock_5
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 5
+    expected_aa: N
+    label: WT_lock_6
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 6
+    expected_aa: N
+    label: WT_lock_7
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 7
+    expected_aa: Y
+    label: WT_lock_8
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 8
+    expected_aa: K
+    label: WT_lock_9
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 9
+    expected_aa: K
+    label: WT_lock_10
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 10
+    expected_aa: N
+    label: WT_lock_11
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 11
+    expected_aa: D
+    label: WT_lock_12
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 12
+    expected_aa: E
+    label: WT_lock_13
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 13
+    expected_aa: L
+    label: WT_lock_14
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 14
+    expected_aa: E
+    label: WT_lock_15
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 15
+    expected_aa: F
+    label: WT_lock_16
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 16
+    expected_aa: V
+    label: WT_lock_17
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 17
+    expected_aa: R
+    label: WT_lock_18
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 18
+    expected_aa: T
+    label: WT_lock_19
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 19
+    expected_aa: G
+    label: WT_lock_20
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 20
+    expected_aa: Y
+    label: WT_lock_21
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 21
+    expected_aa: G
+    label: WT_lock_22
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 22
+    expected_aa: K
+    label: Lys11_lock_23
+    biological_role: functional_analog_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 23
+    expected_aa: D
+    label: WT_lock_24
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 24
+    expected_aa: M
+    label: WT_lock_25
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 25
+    expected_aa: V
+    label: WT_lock_26
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 26
+    expected_aa: K
+    label: WT_lock_27
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 27
+    expected_aa: V
+    label: WT_lock_28
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 28
+    expected_aa: L
+    label: WT_lock_29
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 29
+    expected_aa: H
+    label: WT_lock_30
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 30
+    expected_aa: I
+    label: WT_lock_31
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 31
+    expected_aa: Q
+    label: WT_lock_32
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 32
+    expected_aa: R
+    label: WT_lock_33
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 33
+    expected_aa: D
+    label: WT_lock_34
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 34
+    expected_aa: G
+    label: WT_lock_35
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 35
+    expected_aa: K
+    label: WT_lock_36
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 36
+    expected_aa: Y
+    label: WT_lock_37
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 37
+    expected_aa: H
+    label: WT_lock_38
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 38
+    expected_aa: S
+    label: WT_lock_39
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 39
+    expected_aa: I
+    label: WT_lock_40
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 40
+    expected_aa: K
+    label: WT_lock_41
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 41
+    expected_aa: E
+    label: WT_lock_42
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 42
+    expected_aa: V
+    label: WT_lock_43
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 43
+    expected_aa: A
+    label: WT_lock_44
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 44
+    expected_aa: T
+    label: WT_lock_45
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 45
+    expected_aa: S
+    label: WT_lock_46
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 46
+    expected_aa: V
+    label: WT_lock_47
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 47
+    expected_aa: Q
+    label: WT_lock_48
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 48
+    expected_aa: L
+    label: WT_lock_49
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 49
+    expected_aa: T
+    label: WT_lock_50
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 50
+    expected_aa: L
+    label: WT_lock_51
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 51
+    expected_aa: S
+    label: WT_lock_52
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 52
+    expected_aa: S
+    label: WT_lock_53
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 53
+    expected_aa: K
+    label: WT_lock_54
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 54
+    expected_aa: K
+    label: WT_lock_55
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 55
+    expected_aa: D
+    label: WT_lock_56
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 56
+    expected_aa: Y
+    label: WT_lock_57
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 57
+    expected_aa: L
+    label: WT_lock_58
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 58
+    expected_aa: H
+    label: WT_lock_59
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 59
+    expected_aa: G
+    label: WT_lock_60
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 60
+    expected_aa: D
+    label: WT_lock_61
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 61
+    expected_aa: N
+    label: WT_lock_62
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 62
+    expected_aa: S
+    label: WT_lock_63
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 63
+    expected_aa: D
+    label: WT_lock_64
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 64
+    expected_aa: I
+    label: WT_lock_65
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 65
+    expected_aa: I
+    label: WT_lock_66
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 66
+    expected_aa: P
+    label: WT_lock_67
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 67
+    expected_aa: T
+    label: Thr58_lock_68
+    biological_role: functional_analog_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 68
+    expected_aa: D
+    label: Asp59_lock_69
+    biological_role: functional_analog_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 69
+    expected_aa: T
+    label: WT_lock_70
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 70
+    expected_aa: I
+    label: WT_lock_71
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 71
+    expected_aa: K
+    label: WT_lock_72
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 72
+    expected_aa: N
+    label: WT_lock_73
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 73
+    expected_aa: T
+    label: WT_lock_74
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 74
+    expected_aa: V
+    label: WT_lock_75
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 75
+    expected_aa: H
+    label: WT_lock_76
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 76
+    expected_aa: V
+    label: WT_lock_77
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 78
+    expected_aa: A
+    label: WT_lock_79
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 79
+    expected_aa: K
+    label: WT_lock_80
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 80
+    expected_aa: F
+    label: WT_lock_81
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 81
+    expected_aa: K
+    label: WT_lock_82
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 84
+    expected_aa: K
+    label: WT_lock_85
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 87
+    expected_aa: E
+    label: WT_lock_88
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 89
+    expected_aa: F
+    label: WT_lock_90
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 90
+    expected_aa: G
+    label: WT_lock_91
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 92
+    expected_aa: N
+    label: WT_lock_93
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 93
+    expected_aa: I
+    label: WT_lock_94
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 95
+    expected_aa: E
+    label: WT_lock_96
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 96
+    expected_aa: Y
+    label: WT_lock_97
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 97
+    expected_aa: F
+    label: WT_lock_98
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 98
+    expected_aa: L
+    label: WT_lock_99
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 99
+    expected_aa: S
+    label: WT_lock_100
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 100
+    expected_aa: S
+    label: WT_lock_101
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 101
+    expected_aa: F
+    label: WT_lock_102
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 102
+    expected_aa: N
+    label: WT_lock_103
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 103
+    expected_aa: H
+    label: WT_lock_104
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 104
+    expected_aa: V
+    label: WT_lock_105
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 105
+    expected_aa: I
+    label: WT_lock_106
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 106
+    expected_aa: R
+    label: WT_lock_107
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 107
+    expected_aa: A
+    label: WT_lock_108
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 108
+    expected_aa: Q
+    label: WT_lock_109
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 109
+    expected_aa: V
+    label: WT_lock_110
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 110
+    expected_aa: Y
+    label: WT_lock_111
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 111
+    expected_aa: V
+    label: WT_lock_112
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 112
+    expected_aa: E
+    label: WT_lock_113
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 113
+    expected_aa: E
+    label: WT_lock_114
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 114
+    expected_aa: I
+    label: WT_lock_115
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 115
+    expected_aa: P
+    label: WT_lock_116
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 116
+    expected_aa: W
+    label: WT_lock_117
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 117
+    expected_aa: K
+    label: WT_lock_118
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 118
+    expected_aa: R
+    label: WT_lock_119
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 119
+    expected_aa: L
+    label: WT_lock_120
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 120
+    expected_aa: E
+    label: WT_lock_121
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 121
+    expected_aa: K
+    label: WT_lock_122
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 122
+    expected_aa: N
+    label: WT_lock_123
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 123
+    expected_aa: G
+    label: WT_lock_124
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 124
+    expected_aa: V
+    label: WT_lock_125
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 125
+    expected_aa: K
+    label: WT_lock_126
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 126
+    expected_aa: H
+    label: WT_lock_127
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 127
+    expected_aa: V
+    label: WT_lock_128
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 128
+    expected_aa: H
+    label: WT_lock_129
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 129
+    expected_aa: A
+    label: WT_lock_130
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 130
+    expected_aa: F
+    label: WT_lock_131
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 131
+    expected_aa: I
+    label: WT_lock_132
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 132
+    expected_aa: H
+    label: WT_lock_133
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 133
+    expected_aa: T
+    label: WT_lock_134
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 134
+    expected_aa: P
+    label: WT_lock_135
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 135
+    expected_aa: T
+    label: WT_lock_136
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 136
+    expected_aa: G
+    label: WT_lock_137
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 137
+    expected_aa: T
+    label: WT_lock_138
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 138
+    expected_aa: H
+    label: WT_lock_139
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 139
+    expected_aa: F
+    label: WT_lock_140
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 140
+    expected_aa: C
+    label: WT_lock_141
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 141
+    expected_aa: E
+    label: WT_lock_142
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 142
+    expected_aa: V
+    label: WT_lock_143
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 143
+    expected_aa: E
+    label: WT_lock_144
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 144
+    expected_aa: Q
+    label: WT_lock_145
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 145
+    expected_aa: L
+    label: WT_lock_146
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 146
+    expected_aa: R
+    label: WT_lock_147
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 147
+    expected_aa: S
+    label: WT_lock_148
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 148
+    expected_aa: G
+    label: WT_lock_149
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 149
+    expected_aa: P
+    label: WT_lock_150
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 150
+    expected_aa: P
+    label: WT_lock_151
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 151
+    expected_aa: V
+    label: WT_lock_152
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 152
+    expected_aa: I
+    label: WT_lock_153
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 153
+    expected_aa: H
+    label: WT_lock_154
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 154
+    expected_aa: S
+    label: WT_lock_155
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 155
+    expected_aa: G
+    label: WT_lock_156
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 156
+    expected_aa: I
+    label: WT_lock_157
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 157
+    expected_aa: K
+    label: WT_lock_158
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 158
+    expected_aa: D
+    label: WT_lock_159
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 159
+    expected_aa: L
+    label: WT_lock_160
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 160
+    expected_aa: K
+    label: WT_lock_161
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 161
+    expected_aa: V
+    label: WT_lock_162
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 162
+    expected_aa: L
+    label: WT_lock_163
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 163
+    expected_aa: K
+    label: WT_lock_164
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 164
+    expected_aa: T
+    label: WT_lock_165
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 165
+    expected_aa: T
+    label: WT_lock_166
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 166
+    expected_aa: Q
+    label: WT_lock_167
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 167
+    expected_aa: S
+    label: WT_lock_168
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 168
+    expected_aa: G
+    label: WT_lock_169
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 169
+    expected_aa: F
+    label: Phe160_lock_170
+    biological_role: functional_analog_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 170
+    expected_aa: E
+    label: WT_lock_171
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 171
+    expected_aa: G
+    label: WT_lock_172
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 172
+    expected_aa: F
+    label: WT_lock_173
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 173
+    expected_aa: I
+    label: WT_lock_174
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 174
+    expected_aa: K
+    label: WT_lock_175
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 175
+    expected_aa: D
+    label: WT_lock_176
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 176
+    expected_aa: Q
+    label: WT_lock_177
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 177
+    expected_aa: F
+    label: WT_lock_178
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 178
+    expected_aa: T
+    label: WT_lock_179
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 179
+    expected_aa: T
+    label: WT_lock_180
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 180
+    expected_aa: L
+    label: WT_lock_181
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 181
+    expected_aa: P
+    label: WT_lock_182
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 182
+    expected_aa: E
+    label: WT_lock_183
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 183
+    expected_aa: V
+    label: WT_lock_184
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 184
+    expected_aa: K
+    label: WT_lock_185
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 185
+    expected_aa: D
+    label: WT_lock_186
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 186
+    expected_aa: R
+    label: Arg177_lock_187
+    biological_role: functional_analog_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 187
+    expected_aa: C
+    label: WT_lock_188
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 188
+    expected_aa: F
+    label: WT_lock_189
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 189
+    expected_aa: A
+    label: WT_lock_190
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 190
+    expected_aa: T
+    label: WT_lock_191
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 191
+    expected_aa: Q
+    label: WT_lock_192
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 192
+    expected_aa: V
+    label: WT_lock_193
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 193
+    expected_aa: Y
+    label: WT_lock_194
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 194
+    expected_aa: C
+    label: WT_lock_195
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 195
+    expected_aa: K
+    label: WT_lock_196
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 196
+    expected_aa: W
+    label: WT_lock_197
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 197
+    expected_aa: R
+    label: WT_lock_198
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 198
+    expected_aa: Y
+    label: WT_lock_199
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 199
+    expected_aa: H
+    label: WT_lock_200
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 200
+    expected_aa: Q
+    label: WT_lock_201
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 201
+    expected_aa: C
+    label: WT_lock_202
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 202
+    expected_aa: R
+    label: WT_lock_203
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 203
+    expected_aa: D
+    label: WT_lock_204
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 204
+    expected_aa: V
+    label: WT_lock_205
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 205
+    expected_aa: D
+    label: WT_lock_206
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 206
+    expected_aa: F
+    label: WT_lock_207
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 207
+    expected_aa: E
+    label: WT_lock_208
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 208
+    expected_aa: A
+    label: WT_lock_209
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 209
+    expected_aa: T
+    label: WT_lock_210
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 210
+    expected_aa: W
+    label: WT_lock_211
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 211
+    expected_aa: G
+    label: WT_lock_212
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 212
+    expected_aa: T
+    label: WT_lock_213
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 213
+    expected_aa: I
+    label: WT_lock_214
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 214
+    expected_aa: R
+    label: WT_lock_215
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 215
+    expected_aa: D
+    label: WT_lock_216
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 216
+    expected_aa: L
+    label: WT_lock_217
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 217
+    expected_aa: V
+    label: WT_lock_218
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 218
+    expected_aa: L
+    label: WT_lock_219
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 219
+    expected_aa: E
+    label: WT_lock_220
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 220
+    expected_aa: K
+    label: WT_lock_221
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 221
+    expected_aa: F
+    label: WT_lock_222
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 222
+    expected_aa: A
+    label: WT_lock_223
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 223
+    expected_aa: G
+    label: WT_lock_224
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 224
+    expected_aa: P
+    label: WT_lock_225
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 225
+    expected_aa: Y
+    label: WT_lock_226
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 226
+    expected_aa: D
+    label: WT_lock_227
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 227
+    expected_aa: K
+    label: WT_lock_228
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 228
+    expected_aa: G
+    label: WT_lock_229
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 229
+    expected_aa: E
+    label: WT_lock_230
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 230
+    expected_aa: Y
+    label: WT_lock_231
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 231
+    expected_aa: S
+    label: WT_lock_232
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 232
+    expected_aa: P
+    label: WT_lock_233
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 233
+    expected_aa: S
+    label: WT_lock_234
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 234
+    expected_aa: V
+    label: Val228_lock_235
+    biological_role: functional_analog_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 235
+    expected_aa: Q
+    label: Gln229_lock_236
+    biological_role: functional_analog_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 236
+    expected_aa: K
+    label: WT_lock_237
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 237
+    expected_aa: T
+    label: WT_lock_238
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 238
+    expected_aa: L
+    label: WT_lock_239
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 239
+    expected_aa: Y
+    label: WT_lock_240
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 240
+    expected_aa: D
+    label: WT_lock_241
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 241
+    expected_aa: I
+    label: WT_lock_242
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 242
+    expected_aa: Q
+    label: WT_lock_243
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 243
+    expected_aa: V
+    label: WT_lock_244
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 244
+    expected_aa: L
+    label: WT_lock_245
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 245
+    expected_aa: S
+    label: WT_lock_246
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 246
+    expected_aa: L
+    label: WT_lock_247
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 247
+    expected_aa: S
+    label: WT_lock_248
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 248
+    expected_aa: R
+    label: WT_lock_249
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 249
+    expected_aa: V
+    label: WT_lock_250
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 250
+    expected_aa: P
+    label: WT_lock_251
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 251
+    expected_aa: E
+    label: WT_lock_252
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 252
+    expected_aa: I
+    label: WT_lock_253
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 253
+    expected_aa: E
+    label: WT_lock_254
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 254
+    expected_aa: D
+    label: WT_lock_255
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 255
+    expected_aa: M
+    label: WT_lock_256
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 256
+    expected_aa: E
+    label: WT_lock_257
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 257
+    expected_aa: I
+    label: WT_lock_258
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 258
+    expected_aa: S
+    label: WT_lock_259
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 259
+    expected_aa: L
+    label: WT_lock_260
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 260
+    expected_aa: P
+    label: WT_lock_261
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 261
+    expected_aa: N
+    label: Asn255_lock_262
+    biological_role: functional_analog_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 263
+    expected_aa: H
+    label: His257_lock_264
+    biological_role: functional_analog_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 264
+    expected_aa: Y
+    label: WT_lock_265
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 266
+    expected_aa: N
+    label: WT_lock_267
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 267
+    expected_aa: I
+    label: WT_lock_268
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 268
+    expected_aa: D
+    label: WT_lock_269
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 269
+    expected_aa: M
+    label: WT_lock_270
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 271
+    expected_aa: K
+    label: WT_lock_272
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 272
+    expected_aa: M
+    label: WT_lock_273
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 273
+    expected_aa: G
+    label: WT_lock_274
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 274
+    expected_aa: L
+    label: WT_lock_275
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 275
+    expected_aa: I
+    label: WT_lock_276
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 276
+    expected_aa: N
+    label: WT_lock_277
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 277
+    expected_aa: K
+    label: WT_lock_278
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 278
+    expected_aa: E
+    label: WT_lock_279
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 279
+    expected_aa: E
+    label: WT_lock_280
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 280
+    expected_aa: V
+    label: WT_lock_281
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 281
+    expected_aa: L
+    label: WT_lock_282
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 282
+    expected_aa: L
+    label: WT_lock_283
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 283
+    expected_aa: P
+    label: WT_lock_284
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 285
+    expected_aa: D
+    label: WT_lock_286
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 286
+    expected_aa: N
+    label: WT_lock_287
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 287
+    expected_aa: P
+    label: WT_lock_288
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 288
+    expected_aa: Y
+    label: WT_lock_289
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 289
+    expected_aa: G
+    label: WT_lock_290
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 290
+    expected_aa: K
+    label: WT_lock_291
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 291
+    expected_aa: I
+    label: WT_lock_292
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 292
+    expected_aa: T
+    label: WT_lock_293
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 293
+    expected_aa: G
+    label: WT_lock_294
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 294
+    expected_aa: T
+    label: WT_lock_295
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 295
+    expected_aa: V
+    label: WT_lock_296
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 296
+    expected_aa: K
+    label: WT_lock_297
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 297
+    expected_aa: R
+    label: WT_lock_298
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 298
+    expected_aa: K
+    label: WT_lock_299
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 299
+    expected_aa: L
+    label: WT_lock_300
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 300
+    expected_aa: S
+    label: WT_lock_301
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 301
+    expected_aa: S
+    label: WT_lock_302
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 302
+    expected_aa: R
+    label: WT_lock_303
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1
+  - index_0b: 303
+    expected_aa: L
+    label: WT_lock_304
+    biological_role: near_WT_complement_lock
+    source: uricase_active15_core_release_v1

@@ -1,0 +1,77 @@
+{
+  "schema_version": "v2-projection-policy-spec/1",
+  "policy_id": "state_derived_probe",
+  "policy_version": "v1",
+  "is_diagnostic_only": true,
+  "authority": "PLAN_RF_REFINE_FUSION_V2 §2.4-§2.5; doc/FUSION_V2.md §4.4",
+  "scope": "This file is the FROZEN SPEC of the rule: what the policy does, invariantly, for every protein, stratum, re-entry coordinate and schedule band. It deliberately carries no stratum_key, no B(r) values or digest, no protein id and no r_step -- those are per-cell RUN configuration and live in the resolved config and the band artifact. Keeping them out is what lets the four Canary cells share one signed projection_policy_spec while still pinning different reopen cardinalities.",
+  "identity_contract": {
+    "policy_spec_digest": "SHA-256 of THIS file. Invariant across cells; it is what conditioning.projection_policy_spec names and what the kernel matches the answering policy against.",
+    "policy_config_digest": "Canonical digest of the per-cell realized binding (stratum_key + band calibration id/digest). Varies by cell BY DESIGN: two runs under different calibrations pinned different reopen cardinalities, so they ran the same rule under different configuration.",
+    "separation_rationale": "Collapsing the two made the spec digest cell-specific, so no single frozen file could sign a multi-cell campaign, and it compared a canonical dict digest against a file sha256 -- two values that can never be equal."
+  },
+  "state_partition": {
+    "domain": "the SOURCE partial state's editable positions only; hard anchors are never in any class",
+    "classes": [
+      "write_from_endpoint",
+      "reopen",
+      "inject_from_source_feedback",
+      "carry_from_source"
+    ],
+    "totality": "every editable position lands in exactly one class"
+  },
+  "rules": [
+    {
+      "class": "write_from_endpoint",
+      "rule": "the single lowest-indexed SOURCE-MASKED editable position",
+      "cardinality": 1,
+      "reason": "improvement_associated",
+      "rationale": "the endpoint enters through one masked site. Writing over a RESOLVED position would change the 'a' term of the coupled identity and move the admissible reopen envelope -- a different experiment under this one's name."
+    },
+    {
+      "class": "reopen",
+      "rule": "previously-resolved editable positions taken LATEST-COMMITTED first, ties broken by ascending position index",
+      "cardinality": "read from admissible_reopen_cardinality(B(r_d)); NOT a free parameter",
+      "reason": "uncertain",
+      "rationale": "the most recently committed identities carry the most future information relative to r_d, and taking from that end preserves the older carry_from_source class -- the only class a fixed-support ablation (PLAN §2.6 intervention 2) can target."
+    },
+    {
+      "class": "inject_from_source_feedback",
+      "rule": "resolved editable positions not selected for reopen whose active commit step is >= r_d",
+      "reason": "future_source_identity",
+      "rationale": "an identity committed at or after the re-entry boundary is future information there; it may not be represented as ordinary source carry (PLAN §2.4 rollback causality)."
+    },
+    {
+      "class": "carry_from_source",
+      "rule": "every remaining editable position: source-masked positions other than the write site, plus resolved positions not reopened whose active commit step is < r_d",
+      "reason": "inherited_mask when the source token is the mask token, otherwise temporally_valid"
+    }
+  ],
+  "reopen_cardinality_law": {
+    "identity": "u_proj = u_src - a + b_new",
+    "a": "endpoint writes landing on source-masked positions",
+    "b_new": "previously-resolved editable positions newly masked",
+    "byte_neutral_classes": ["inject_from_source_feedback", "carry_from_source"],
+    "floor": 1,
+    "source": "the run's declared schedule_band_calibration, looked up exactly by (r_d, stratum_key); lookup_band never interpolates",
+    "note": "the numeric envelope is per-cell and lives in the band artifact, never here"
+  },
+  "null_law": {
+    "kind": "typed PolicyRejection, never an exception and never a quiet fallback",
+    "conditions": [
+      "no source-masked write site at r_d (every editable position already resolved)",
+      "B(r_d) is missing for this stratum, or the band intersection is empty",
+      "B(r_d) admits no feasible reopen cardinality here"
+    ],
+    "rationale": "a quiet fallback -- writing over a resolved position, or reopening fewer than the band demands -- would produce a transition under a partition nobody declared while the artifact named the declared one."
+  },
+  "excluded_by_construction": [
+    "stratum_key",
+    "schedule band quantiles or calibration digest",
+    "protein_id",
+    "r_step",
+    "c_source_step / c_next_step",
+    "any Head, structure or reward evidence"
+  ],
+  "not_authorized": "This is the DIAGNOSTIC kernel probe. It is not the production FeedbackSupportPolicySpec of PLAN §2.5, which must additionally freeze residue-level Head-burden attribution, source-instability evidence, endpoint-sibling consensus and a matched source-off comparator. Registering this id does not authorize D>1."
+}

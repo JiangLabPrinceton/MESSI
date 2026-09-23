@@ -1,0 +1,12 @@
+# Python 3.12. Install the appropriate PyTorch wheel first (see docs/installation.md).
+numpy==2.4.2
+pandas==3.0.1
+pyarrow==23.0.0
+scipy==1.17.0
+PyYAML==6.0.3
+scikit-learn==1.8.0
+tqdm==4.67.3
+biopython==1.86
+matplotlib==3.10.8
+biotite==1.6.0
+tmtools==0.3.0

@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "role": "dplm_inverse_folding_inference",
+  "source_checkpoint_sha256": "b6ca4f7eae43ef8cdbe4f059c1cab19c5d0db171e42a2ff7256aae76d50b3be5",
+  "checkpoint_sha256": "e851d37c7065c089072aa91cedce80ec8a64bac4db4b17ff1d84fa47445f1035",
+  "state_tensor_count": 868,
+  "all_tensor_values_exact": true,
+  "config_sha256": "0f1d5f8e6bfe64952c9a6e09cd335e368c55210bcba4a1000940cc473f66e434",
+  "archive_sha256": "d55d6ed72bda6a717f74051539401780bd2d20411a7de8539bfd26666066f345",
+  "parts": [
+    {
+      "file": "dplm-inference.tar.part00",
+      "bytes": 1073741824,
+      "sha256": "5ef2481a294d970cfa081e998964027ce953a275af6389f8645e76c636006480"
+    },
+    {
+      "file": "dplm-inference.tar.part01",
+      "bytes": 1073741824,
+      "sha256": "4f13e9c71818ddf1f6f498d7c1035eae5ced3be7fcc94c9554772ad368c22f0a"
+    },
+    {
+      "file": "dplm-inference.tar.part02",
+      "bytes": 965158912,
+      "sha256": "7c6561e9c4a4cb7ca7646f29fe82964eb791f0602f927dc851f4959cb32c856d"
+    }
+  ],
+  "changes": [
+    "training state and optimizer removed",
+    "config filesystem paths made relative"
+  ],
+  "restore": "cat dplm-inference.tar.part* | tar -xf -"
+}

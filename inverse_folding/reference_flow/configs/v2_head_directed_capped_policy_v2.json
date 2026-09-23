@@ -1,0 +1,47 @@
+{
+  "schema_version": "v2-projection-policy-spec/1",
+  "policy_id": "head_directed_capped",
+  "policy_version": "v2",
+  "is_diagnostic_only": false,
+  "authority": "high-risk capability reward-baseline freeze",
+  "scope": "Depth-ladder Head-directed support policy. D0 establishes the generated-design reward lineage; D1+ uses strict incumbent improvement. WT/native is safety and local-attribution reference only.",
+  "depth0_reward_bootstrap": {
+    "reward_incumbent": null,
+    "candidate_domain": "Exact definitively feasible sequence-equivalence representatives from the generated D0 pool.",
+    "selection": "Ascending (head_global_risk, endpoint_id); rank zero only.",
+    "runtime_binding": "The cycle supplies source depth, selected rank, and selected endpoint id directly to the policy call.",
+    "epsilon_R": null,
+    "fallback": "none; a missing or mismatched rank-zero binding stalls",
+    "commit_law": "Only a committed D0 transition binds the selected donor as I1."
+  },
+  "reference_roles": {
+    "cumulative_safety_reference": "Immutable WT/native sequence used by cumulative safety admission.",
+    "depth0_attribution_reference": "The same content-bound WT/native bytes used only for D0 aligned-window direction and leave-one-out revert residues.",
+    "lineage_reward_incumbent": "Absent logically at D0; I1 is the committed rank-zero D0 donor; later Id is the last accepted endpoint."
+  },
+  "deeper_donor_gate": {
+    "domain": "d >= 1",
+    "law": "R_H(donor) < R_H(lineage_incumbent) - epsilon_R",
+    "fallback": "none; emit stall_no_better_donor"
+  },
+  "write_law": {
+    "candidate_domain": "editable non-anchor positions unresolved in the live source, comparator-discordant, and covered by an aligned Head window improved in the donor",
+    "contribution": "R_H(donor with position reverted to the active comparator) - R_H(donor)",
+    "positive_gate": "strictly greater than the calibrated local-contribution tolerance",
+    "cap": "ceil(0.05 * N_editable)",
+    "selection": "descending contribution, residue index tie-break",
+    "fallback": "none"
+  },
+  "reopen_law": {
+    "count": "u_target - u_source + m_write",
+    "target": "content-bound midpoint_tie_low centre of the exact schedule band",
+    "priority": "new_hotspot>worsened>residual_burden>active_uncertainty>temporal_instability>index",
+    "background_remask": false
+  },
+  "artifact_contract": {
+    "required_fields": "reward_gate_kind and attribution_reference_sequence_md5; donor-gate fields are null at D0",
+    "d0_gate_kind": "best_admissible_depth0",
+    "deeper_gate_kind": "strict_improvement"
+  },
+  "not_authorized": "WT-as-reward-incumbent at D0, a D0 epsilon comparison, endpoint_rank > 0 bootstrap, or weakening the strict D1+ margin."
+}

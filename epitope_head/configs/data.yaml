@@ -1,0 +1,45 @@
+# Epitope Head v0 — Stage A Data Config
+# Frozen decisions per PLAN.md Task A0
+
+data:
+  # Raw input paths
+  tsv_path: data/mhc_if_v2.tsv
+  fasta_path: data/all_sequences.fasta
+
+  # Allele policy (frozen: PLAN.md §5, codemap d001)
+  target_allele: "HLA-DRB1*07:01"
+
+  # Peptide length range (frozen)
+  min_k: 12
+  max_k: 25
+
+  # Coordinate convention (frozen)
+  coord_mode: iedb_1b_inclusive  # source; internal uses 0b_half_open
+
+  # Long protein policy (v0: skip)
+  max_protein_length: 1022
+
+  # Split config (v1.1: seq_hash + mmseqs cluster-level split)
+  split_seed: 42
+  split_ratios: [0.8, 0.1, 0.1]
+
+  # mmseqs clustering parameters (frozen: PLAN.md D0)
+  mmseqs_bin: "mmseqs"
+  cluster_identity: 0.90
+  cluster_coverage: 0.80
+  cluster_cov_mode: 2   # query (shorter) sequence alignment coverage
+
+  # Stage A allele filter profiles (frozen: codemap d001)
+  stage_a:
+    profile_strict:
+      description: "high_res_single rows with alleles exactly [target_allele]"
+      resolution_filter: "high_res_single"
+      allele_match: "exact_single"
+
+    profile_balanced:
+      description: "strict + deterministic 0.5x sample of multi rows containing target_allele"
+      base: "profile_strict"
+      multi_resolution_filter: "multi"
+      multi_allele_match: "contains_target"
+      multi_ratio: 0.5
+      multi_seed: 42

@@ -1,0 +1,56 @@
+{
+  "schema_version": "messi-release-recipe/1",
+  "purpose": "historical_uricase_family_constrained",
+  "source_revision": "0b33891b3bd51fb6acebc9a99304ba5b393b7e02",
+  "profile": "uricase_core0_production_d3_k12_r40",
+  "available_in_release_materializer": false,
+  "root_seeds": [
+    20260811,
+    20260812
+  ],
+  "schedule": {
+    "active_population_width": 1,
+    "coordinate_law": "progressive_checkpoint",
+    "depth_cap": 3,
+    "min_lookahead_tail_steps": 10,
+    "points": [
+      {
+        "band_key": "step40",
+        "c_next_step": 60,
+        "c_source_step": 50,
+        "depth": 0,
+        "n_lookaheads": 12,
+        "r_step": 40
+      },
+      {
+        "band_key": "step40",
+        "c_next_step": 70,
+        "c_source_step": 60,
+        "depth": 1,
+        "n_lookaheads": 12,
+        "r_step": 40
+      },
+      {
+        "band_key": "step40",
+        "c_next_step": 80,
+        "c_source_step": 70,
+        "depth": 2,
+        "n_lookaheads": 12,
+        "r_step": 40
+      }
+    ],
+    "schedule_id": "uricase-core0-production-d3-k12-r40-v1"
+  },
+  "caps": {
+    "max_definitive_refolds": 53,
+    "max_gpu_seconds": 86400,
+    "max_head_calls": 6000,
+    "max_logical_dfe": 2390,
+    "max_retries": 2,
+    "max_walltime_s": 21600,
+    "retry_scope": "per_request"
+  },
+  "donor_improvement_epsilon": 0.005,
+  "local_contribution_tolerance": 0.0,
+  "source_config_sha256": "0727b2f48eb40d7f9457e4c0a0339e5d7fd38b58f2a90fe715f80d7e97b5e923"
+}

@@ -1,0 +1,291 @@
+schema_version: luxsit_active_site_v1
+description: LuxSit-i core117 safety-max exact-identity lock for catalytic, substrate-pocket,
+  post-inpainting ProteinMPNN, and optimized-genotype residues
+annotation_provenance:
+  scope: exact_LuxSit_i_core117_only_no_projection
+  projection_allowed: false
+  target:
+    protein_id: LuxSit-i_core117
+    sequence_length: 117
+    sequence_md5: 221229e39248cb2f6a725760cbfa70d0
+    numbering: paper_position_1b_equals_core117_position_1b
+    parent_to_LuxSit_i_mutations:
+    - R60S
+    - A96L
+    - M110V
+  structures:
+    experimental_structure_available: false
+    warning: The functional reference is a Rosetta theoretical model, not an experimental
+      PDB structure.
+  evidence_tiers:
+    catalytic_dyads_4_1b:
+    - 14
+    - 18
+    - 65
+    - 98
+    published_functional_pocket_16_1b:
+    - 13
+    - 14
+    - 17
+    - 18
+    - 35
+    - 38
+    - 49
+    - 65
+    - 81
+    - 83
+    - 94
+    - 96
+    - 98
+    - 100
+    - 110
+    - 112
+    parent_LuxSit_2023_SSM21_1b:
+    - 13
+    - 14
+    - 17
+    - 18
+    - 35
+    - 37
+    - 38
+    - 49
+    - 52
+    - 53
+    - 56
+    - 60
+    - 65
+    - 81
+    - 83
+    - 94
+    - 96
+    - 98
+    - 100
+    - 110
+    - 112
+    author_ProteinMPNN_fixed_16_1b:
+    - 13
+    - 14
+    - 17
+    - 18
+    - 35
+    - 38
+    - 49
+    - 65
+    - 81
+    - 83
+    - 94
+    - 96
+    - 98
+    - 100
+    - 110
+    - 112
+    post_inpainting_ProteinMPNN_fixed_21_1b:
+    - 13
+    - 14
+    - 17
+    - 18
+    - 35
+    - 37
+    - 38
+    - 43
+    - 49
+    - 52
+    - 53
+    - 56
+    - 65
+    - 81
+    - 83
+    - 94
+    - 96
+    - 98
+    - 100
+    - 110
+    - 112
+    safety_max_exact_lock_22_1b:
+    - 13
+    - 14
+    - 17
+    - 18
+    - 35
+    - 37
+    - 38
+    - 43
+    - 49
+    - 52
+    - 53
+    - 56
+    - 60
+    - 65
+    - 81
+    - 83
+    - 94
+    - 96
+    - 98
+    - 100
+    - 110
+    - 112
+  enforcement_policy:
+    default: safety_max_22_exact_WT_identity_hard_fix
+    source_preflight: full_sequence_md5_then_anchor_identity
+    candidate_validation: anchor_identity_only_after_generation
+    indels: forbidden_for_current_numbering_contract
+    note: S60 is a precautionary LuxSit-i brightness-genotype lock, not a catalytic-site
+      claim.
+entries:
+- protein_id: LuxSit-i_core117
+  sequence_md5: 221229e39248cb2f6a725760cbfa70d0
+  source_sequence: LuxSit-i 117-aa design core from the author Rosetta model; paper
+    numbering 1-117
+  hard_anchors:
+  - index_0b: 12
+    expected_aa: F
+    label: Phe13
+    biological_role: DTZ_aromatic_pi_packing
+    source: Nature 2023 Fig. 2f-i; Chem 2025 fixed pocket
+  - index_0b: 13
+    expected_aa: Y
+    label: Tyr14
+    biological_role: catalytic_Tyr14_His98_dyad
+    source: Nature 2023 Fig. 2f-i and mechanism model
+  - index_0b: 16
+    expected_aa: L
+    label: Leu17
+    biological_role: DTZ_hydrophobic_packing
+    source: Nature 2023 Fig. 2f-i; Chem 2025 fixed pocket
+  - index_0b: 17
+    expected_aa: D
+    label: Asp18
+    biological_role: modeled_bidentate_Asp18_Arg65_network
+    source: Nature 2023 Fig. 2f-i and mechanism model
+  - index_0b: 34
+    expected_aa: I
+    label: Ile35
+    biological_role: DTZ_hydrophobic_packing
+    source: Nature 2023 Fig. 2f-i; Chem 2025 fixed pocket
+  - index_0b: 36
+    expected_aa: L
+    label: Leu37
+    biological_role: SSM_pocket_flank_and_post_inpainting_lock
+    source: Nature 2023 SSM; Chem 2025 post-inpainting ProteinMPNN protocol
+  - index_0b: 37
+    expected_aa: W
+    label: Trp38
+    biological_role: DTZ_aromatic_pi_packing
+    source: Nature 2023 Fig. 2f-i; Chem 2025 fixed pocket
+  - index_0b: 42
+    expected_aa: F
+    label: Phe43
+    biological_role: post_inpainting_ProteinMPNN_pocket_flank
+    source: Chem 2025 post-inpainting ProteinMPNN protocol; not in original 2023 SSM
+      set
+  - index_0b: 48
+    expected_aa: F
+    label: Phe49
+    biological_role: DTZ_aromatic_pi_packing
+    source: Nature 2023 Fig. 2f-i; Chem 2025 fixed pocket
+  - index_0b: 51
+    expected_aa: W
+    label: Trp52
+    biological_role: SSM_pocket_flank_and_post_inpainting_lock
+    source: Nature 2023 SSM; Chem 2025 post-inpainting ProteinMPNN protocol
+  - index_0b: 52
+    expected_aa: F
+    label: Phe53
+    biological_role: SSM_pocket_flank_and_post_inpainting_lock
+    source: Nature 2023 SSM; Chem 2025 post-inpainting ProteinMPNN protocol
+  - index_0b: 55
+    expected_aa: L
+    label: Leu56
+    biological_role: SSM_pocket_flank_and_post_inpainting_lock
+    source: Nature 2023 SSM; Chem 2025 post-inpainting ProteinMPNN protocol
+  - index_0b: 59
+    expected_aa: S
+    label: Ser60
+    biological_role: LuxSit_i_brightness_genotype_precaution
+    source: Nature 2023 R60S optimization; intentionally omitted from Chem 2025 RFjoint
+      fixed set
+  - index_0b: 64
+    expected_aa: R
+    label: Arg65
+    biological_role: catalytic_DTZ_N1_anion_stabilization
+    source: Nature 2023 SSM and mechanism model; R65A inactive in Chem 2025
+  - index_0b: 80
+    expected_aa: V
+    label: Val81
+    biological_role: DTZ_hydrophobic_packing
+    source: Nature 2023 Fig. 2f-i; Chem 2025 fixed pocket
+  - index_0b: 82
+    expected_aa: L
+    label: Leu83
+    biological_role: DTZ_hydrophobic_packing
+    source: Nature 2023 Fig. 2f-i; Chem 2025 fixed pocket
+  - index_0b: 93
+    expected_aa: V
+    label: Val94
+    biological_role: DTZ_hydrophobic_packing
+    source: Nature 2023 Fig. 2f-i; Chem 2025 fixed pocket
+  - index_0b: 95
+    expected_aa: L
+    label: Leu96
+    biological_role: optimized_DTZ_pocket_shape_complementarity
+    source: Nature 2023 A96L LuxSit-i optimization; Chem 2025 fixed pocket
+  - index_0b: 97
+    expected_aa: H
+    label: His98
+    biological_role: catalytic_Tyr14_His98_dyad_and_DTZ_O1_contact
+    source: Nature 2023 Fig. 2f-i and mechanism model
+  - index_0b: 99
+    expected_aa: W
+    label: Trp100
+    biological_role: DTZ_aromatic_pi_packing
+    source: Nature 2023 Fig. 2f-i; Chem 2025 fixed pocket
+  - index_0b: 109
+    expected_aa: V
+    label: Val110
+    biological_role: optimized_DTZ_pocket_shape_complementarity
+    source: Nature 2023 M110V LuxSit-i optimization; Chem 2025 fixed pocket
+  - index_0b: 111
+    expected_aa: V
+    label: Val112
+    biological_role: DTZ_hydrophobic_packing
+    source: Nature 2023 Fig. 2f-i; Chem 2025 fixed pocket
+  monitored_shell:
+  - index_0b: 24
+    expected_aa: A
+    label: Ala25
+    enforcement: monitored_posthoc
+    rationale: Second-shell structural watchlist; model evidence only, so not hard-fixed
+      by the authors' redesign protocols.
+  - index_0b: 56
+    expected_aa: F
+    label: Phe57
+    enforcement: monitored_posthoc
+    rationale: Model contact to DTZ (whole-residue heavy-atom minimum 3.69 A; side-chain
+      minimum 3.89 A) but mutable in successful author redesigns.
+  - index_0b: 62
+    expected_aa: A
+    label: Ala63
+    enforcement: monitored_posthoc
+    rationale: Direct model contact to DTZ (minimum heavy-atom distance 3.95 A) but
+      mutable in successful author redesigns.
+  - index_0b: 81
+    expected_aa: Q
+    label: Gln82
+    enforcement: monitored_posthoc
+    rationale: Backbone/second-shell DTZ watchlist; model evidence only.
+  - index_0b: 84
+    expected_aa: A
+    label: Ala85
+    enforcement: monitored_posthoc
+    rationale: Second-shell DTZ watchlist; model evidence only.
+  - index_0b: 94
+    expected_aa: D
+    label: Asp95
+    enforcement: monitored_posthoc
+    rationale: Backbone/second-shell DTZ watchlist; model evidence only.
+  - index_0b: 113
+    expected_aa: I
+    label: Ile114
+    enforcement: monitored_posthoc
+    rationale: Direct model contact to DTZ (minimum heavy-atom distance 3.77 A) but
+      mutable in successful author redesigns.

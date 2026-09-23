@@ -1,0 +1,2 @@
+# Preserve upstream source formatting; review project code with normal whitespace checks.
+inverse_folding/dplm/vendor/** linguist-vendored -whitespace

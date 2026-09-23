@@ -1,0 +1,17 @@
+{
+  "profile": "RF-HEAD-REFINE-STD-V1__20260822",
+  "description": "Frozen search settings; provide input/model/output paths separately.",
+  "cli_args": [
+    "--mode", "refine", "--target-source", "head",
+    "--head-residue-threshold", "0.15",
+    "--head-max-target-positions", "12",
+    "--head-aa-per-position", "2",
+    "--max-pairs", "200", "--beam-width", "8",
+    "--max-rounds", "6", "--patience", "1",
+    "--max-path-mutations", "6", "--topB", "64", "--refold-cap", "12",
+    "--structure-gate-profile", "legacy", "--scTM-eps", "0.05",
+    "--refold-model", "esmfold2_live",
+    "--refinement-structure-metrics", "global_ca_rmsd,plddt",
+    "--emit-eval-metrics", "--hotspot-threshold", "0.5"
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "head_variant": "LC1",
+  "architecture": "a1res03",
+  "assets": [
+    {
+      "file": "weights/drb0701/epoch_29.pt",
+      "allele": "HLA-DRB1*07:01",
+      "role": "fixed_epoch_full_data_production",
+      "epoch_zero_based": 29,
+      "sha256": "144ae7c808e9c69aa9efad523957a16579045017d1f8192bd97720947cbdc163",
+      "bytes": 34366562
+    },
+    {
+      "file": "weights/drb0701/resolved_config.yaml",
+      "allele": "HLA-DRB1*07:01",
+      "role": "fixed_epoch_full_data_production",
+      "epoch_zero_based": 29,
+      "sha256": "968fbfcef534be8958ce8f1d49927c27205d75297a587dd12c4e191be3961326",
+      "bytes": 1311
+    },
+    {
+      "file": "weights/drb0401/epoch_34.pt",
+      "allele": "HLA-DRB1*04:01",
+      "role": "fixed_epoch_full_data_production",
+      "epoch_zero_based": 34,
+      "sha256": "12e8018fed5a9255e5e467811cd8c8b4520fd1ab7cdad281d93c75472b6ffb23",
+      "bytes": 34366562
+    },
+    {
+      "file": "weights/drb0401/resolved_config.yaml",
+      "allele": "HLA-DRB1*04:01",
+      "role": "fixed_epoch_full_data_production",
+      "epoch_zero_based": 34,
+      "sha256": "0033442b45a7023a92148c726dbfc9d19d493de01079846827d82f04d6d7b43f",
+      "bytes": 1311
+    },
+    {
+      "file": "weights/drb1501/epoch_24.pt",
+      "allele": "HLA-DRB1*15:01",
+      "role": "fixed_epoch_full_data_production",
+      "epoch_zero_based": 24,
+      "sha256": "1ff54085f2cde1ea0847ebca567af49b2ca85cd23e730d21d515bbb02896136b",
+      "bytes": 34366562
+    },
+    {
+      "file": "weights/drb1501/resolved_config.yaml",
+      "allele": "HLA-DRB1*15:01",
+      "role": "fixed_epoch_full_data_production",
+      "epoch_zero_based": 24,
+      "sha256": "fec4e3289d060d9d6e8da8abe93b0b60db20ad578e218e879d6412f33549ecc3",
+      "bytes": 1311
+    }
+  ],
+  "inference_configs": [
+    {
+      "file": "epitope_head/configs/model.yaml",
+      "sha256": "e7441017f09224d2380eacde88c91e50b3f00ff693ee0a80d8d3c9d82f981da4"
+    },
+    {
+      "file": "epitope_head/configs/model_ablation.yaml",
+      "sha256": "ad9ecbdf23479ed064457f2372d39291072f21738795972d4b20ba03a65dcd1c"
+    },
+    {
+      "file": "epitope_head/configs/inference.yaml",
+      "sha256": "1be4185c021194a287c2cd9a26500675064edcc404752c89901d74cd560a8dcf"
+    }
+  ]
+}

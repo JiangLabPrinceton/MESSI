@@ -1,0 +1,39 @@
+# Inverse Folding v1 — Baseline Contract Config
+# Frozen decisions per PLAN_IF.md Task K0
+# Do NOT modify frozen values without updating PLAN_IF.md and LOG.md
+
+baseline:
+  # ── Dependency Pins ──────────────────────────────────────────────────
+  dplm_repo: "github.com/bytedance/dplm"
+  dplm_commit: 3286440a42f2a63f06ca07560ee1a2cb82568396           # Pin after clone; required before training
+  checkpoint_id: "airkingbd/dplm_650m"
+
+  # ── Architecture (frozen) ────────────────────────────────────────────
+  trainable_params_pattern: "adapter"   # only params matching this substring are trainable
+  gvp_encoder: "esm_if1_gvp4_t16_142M_UR50"
+  gvp_frozen: true
+  backbone_frozen: true
+
+  # ── Data ─────────────────────────────────────────────────────────────
+  dataset_root: null           # MUST be set at runtime (cluster path)
+  dataset_name: "cath_4.3"
+  max_length: 500
+  atoms: ["N", "CA", "C", "O"]
+
+  # ── Training ─────────────────────────────────────────────────────────
+  seed: 42
+  diffusion_timesteps: 100
+  noise_strategy: "random_mask"
+  max_steps: 200000
+  lr: 1.0e-3
+  warmup_steps: 4000
+  max_tokens_per_batch: 6000
+
+  # ── Artifacts ────────────────────────────────────────────────────────
+  artifact_root: "outputs/if/runs"
+  run_dir_template: "${artifact_root}/dplm_v1_adapter/${run_id}"
+  required_run_artifacts:
+    - "resolved_config.yaml"
+    - "checkpoints/"
+    - "baseline_validation.json"
+    - "failure_ledger.json"

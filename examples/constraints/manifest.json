@@ -1,0 +1,128 @@
+{
+  "constraints": [
+    {
+      "protein_id": "A0A9P8P4R1",
+      "name": "O. polymorpha",
+      "allele": "HLA-DRB1*15:01",
+      "file": "examples/constraints/A0A9P8P4R1_drb1501.yaml",
+      "source_sha256": "ae6e92057df1f69ad7dca80790b571ee4e5bf58e73912b65aab9b64a74131a52",
+      "sequence_md5": "8837114bd01a242f42115dd96a2c7380",
+      "n_fixed": 307,
+      "n_free": 21,
+      "family_production_cells": 2
+    },
+    {
+      "protein_id": "A0A100I4D7",
+      "name": "A. niger",
+      "allele": "HLA-DRB1*15:01",
+      "file": "examples/constraints/A0A100I4D7_drb1501.yaml",
+      "source_sha256": "5e566b350c5072bec4262287d6a8bef7fc19b416985a9a7c50ce11644d35bf9a",
+      "sequence_md5": "1c10e3434736385e9c2d7fc4931c4c6d",
+      "n_fixed": 297,
+      "n_free": 5,
+      "family_production_cells": 2
+    },
+    {
+      "protein_id": "Q00511",
+      "name": "A. flavus",
+      "allele": "HLA-DRB1*15:01",
+      "file": "examples/constraints/Q00511_drb1501.yaml",
+      "source_sha256": "51466bc53940453e165b55556ec3f5671150e87e65367bf8d2b2ae245dcece03",
+      "sequence_md5": "37bdca69e4f1ddd590d6d54618ef9152",
+      "n_fixed": 295,
+      "n_free": 7,
+      "family_production_cells": 2
+    },
+    {
+      "protein_id": "P25689",
+      "name": "P. hamadryas",
+      "allele": "HLA-DRB1*15:01",
+      "file": "examples/constraints/P25689_drb1501.yaml",
+      "source_sha256": "4ffc83b97ed3b57f6e873017892b9c3ef2db53b8f53f835a18ac82fe39df717a",
+      "sequence_md5": "9d6afb9a31c31f35abf0aefea9a6e5b3",
+      "n_fixed": 292,
+      "n_free": 12,
+      "family_production_cells": 0
+    },
+    {
+      "protein_id": "Q6P700",
+      "name": "X. laevis",
+      "allele": "HLA-DRB1*15:01",
+      "file": "examples/constraints/Q6P700_drb1501.yaml",
+      "source_sha256": "7037714521b0eb882e685e0999f9292ee5e4c8499f81820afbc71e7aad8575e3",
+      "sequence_md5": "292c8685306af07f8c97e301a0b9225a",
+      "n_fixed": 300,
+      "n_free": 4,
+      "family_production_cells": 0
+    },
+    {
+      "protein_id": "Q9RV70",
+      "name": "D. radiodurans",
+      "allele": "HLA-DRB1*15:01",
+      "file": "examples/constraints/Q9RV70_drb1501.yaml",
+      "source_sha256": "a63c32c68f3bf6849130a56ece41dd8c0b816aa83f12c1dcb8d5800b771481f4",
+      "sequence_md5": "e929c8c6dc8d27a1e2b7f85c64f3cebd",
+      "n_fixed": 294,
+      "n_free": 4,
+      "family_production_cells": 2
+    },
+    {
+      "protein_id": "O74409",
+      "name": "S. pombe",
+      "allele": "HLA-DRB1*15:01",
+      "file": "examples/constraints/O74409_drb1501.yaml",
+      "source_sha256": "7173d56133f940b8a03b05ad16a4820cf2ba68e902dd466da6ad7a9165b1e4a7",
+      "sequence_md5": "6e4c917fda0fdb27d73202ad8d181047",
+      "n_fixed": 293,
+      "n_free": 3,
+      "family_production_cells": 2
+    },
+    {
+      "protein_id": "P25688",
+      "name": "M. musculus",
+      "allele": "HLA-DRB1*15:01",
+      "file": "examples/constraints/P25688_drb1501.yaml",
+      "source_sha256": "5fffb7a354a8418c689b4ed2c981dcdb15a3d2710ee536a8bad4cb722ec6ae1d",
+      "sequence_md5": "e6c7d7cc453297913571ef4188f91fa8",
+      "n_fixed": 295,
+      "n_free": 8,
+      "family_production_cells": 0
+    },
+    {
+      "protein_id": "P04670",
+      "name": "G. max",
+      "allele": "HLA-DRB1*15:01",
+      "file": "examples/constraints/P04670_drb1501.yaml",
+      "source_sha256": "4a9d24163d29f4d22d8cf4020a1e9b83c4518a44943513bed0ef58c9a16584b6",
+      "sequence_md5": "87bdf4f2d9d1a508444ea9c1448e12bb",
+      "n_fixed": 304,
+      "n_free": 5,
+      "family_production_cells": 0
+    },
+    {
+      "protein_id": "P16164",
+      "name": "S. scrofa",
+      "allele": "HLA-DRB1*15:01",
+      "file": "examples/constraints/P16164_drb1501.yaml",
+      "source_sha256": "80fd4cae10ffc00d7d59b64e7178d0aa211ea86233eb246b0ee1435492f186ae",
+      "sequence_md5": "b4c9ccd78cee76373763745c5b20364b",
+      "n_fixed": 296,
+      "n_free": 8,
+      "family_production_cells": 0
+    },
+    {
+      "protein_id": "LuxSit-i_core117",
+      "file": "examples/constraints/luxsit_i.yaml",
+      "source_sha256": "3a411905957be75632eb4d65b971203287b2f8a9322a48436af63cb00a9d1032",
+      "sha256": "f2ea6558622393bde88779125f9f5d2ff6af56226d576322a9f6e72b62583308",
+      "n_fixed": 22
+    },
+    {
+      "protein_id": "PD1_b2_BINDER",
+      "file": "examples/constraints/pd1_b2_fixed57.yaml",
+      "source_sha256": "9986c68de848c7641b168faa1e5118dd26efe32a91ab097460ece028b4d6b491",
+      "sha256": "3604fa3ea96e160e2441267cd63cfc603ab1d16bfa2f99e0c9b7a125b23a78db",
+      "n_fixed": 57
+    }
+  ]
+}

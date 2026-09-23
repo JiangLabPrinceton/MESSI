@@ -1,0 +1,154 @@
+arm:
+  a2_matching_resource: definitive_refolds
+  a2_unmatched_reported:
+  - gpu_seconds
+  - head_calls
+  - logical_dfe
+  - walltime_s
+  arm_role: v2
+  feedback_enabled: true
+caps:
+  max_definitive_refolds: 64
+  max_gpu_seconds: 86400
+  max_head_calls: 6000
+  max_logical_dfe: 2200
+  max_retries: 0
+  max_walltime_s: 21600
+  retry_scope: per_request
+content:
+- binding: runtime
+  expected_sha256: null
+  label: backbone.bin
+  role: backbone
+- binding: runtime
+  expected_sha256: null
+  label: code_revision.bin
+  role: code_revision
+- binding: runtime
+  expected_sha256: null
+  label: cohort_table.bin
+  role: cohort_table
+- binding: frozen
+  expected_sha256: REPLACE_sha256_of_complete_reference_sequence
+  label: complete_reference_sequence.bin
+  role: complete_reference_sequence
+- binding: runtime
+  expected_sha256: null
+  label: constraint_manifest.bin
+  role: constraint_manifest
+- binding: runtime
+  expected_sha256: null
+  label: coordinate_mask.bin
+  role: coordinate_mask
+- binding: runtime
+  expected_sha256: null
+  label: dplm_checkpoint.bin
+  role: dplm_checkpoint
+- binding: runtime
+  expected_sha256: null
+  label: fixed_token_policy.bin
+  role: fixed_token_policy
+- binding: runtime
+  expected_sha256: null
+  label: head_checkpoint.bin
+  role: head_checkpoint
+- binding: runtime
+  expected_sha256: null
+  label: head_config.bin
+  role: head_config
+- binding: frozen
+  expected_sha256: REPLACE_sha256_of_projection_policy_spec
+  label: projection_policy_spec.bin
+  role: projection_policy_spec
+- binding: runtime
+  expected_sha256: null
+  label: reference_sequences.bin
+  role: reference_sequences
+- binding: runtime
+  expected_sha256: null
+  label: rf_sampler_config.bin
+  role: rf_sampler_config
+- binding: frozen
+  expected_sha256: REPLACE_sha256_of_schedule_band_calibration
+  label: schedule_band_calibration.bin
+  role: schedule_band_calibration
+- binding: runtime
+  expected_sha256: null
+  label: structure_backend.bin
+  role: structure_backend
+- binding: runtime
+  expected_sha256: null
+  label: structure_config.bin
+  role: structure_config
+- binding: runtime
+  expected_sha256: null
+  label: tokenizer.bin
+  role: tokenizer
+- binding: runtime
+  expected_sha256: null
+  label: v0_structure_gate_config.bin
+  role: v0_structure_gate_config
+head:
+  allele: DRB1_0701
+  score_scale: raw_logit
+  window_k_max: 25
+  window_k_min: 12
+identity:
+  campaign_id: v2-canary-2026Q3
+  code_revision: REPLACE_WITH_GIT_SHA
+  master_seed: 20260806
+  phase: state_transition_canary
+  seed_schema: v2seed-1
+  split_role: canary
+projection:
+  admissible_mask_load_unit: absolute_positions
+  assimilation_rule: first_forward_raw_logits
+  support_policy_id: state_derived_probe
+  support_policy_is_diagnostic: true
+  support_policy_version: v1
+  temporal_history_rule: commit_before_reentry
+safety:
+  cumulative_reference_kind: native_wt
+  cumulative_reference_label: wt_native
+  delta_new_cumulative:
+    artifact:
+      allele: DRB1_0701
+      calibration_data_digest: REPLACE_sha256
+      gate_kind: whole_landscape_new_hotspot
+      reference_kind: native_wt
+      reference_label: wt_native
+      schema_version: v2-hotspot-calibration-1
+      scope: cumulative_depth0
+      score_scale: raw_logit
+      window_domain: whole_landscape
+      window_k_max: 25
+      window_k_min: 12
+    source_id: REPLACE_from_calibration_json
+    source_kind: measured_calibration
+    source_ref: REPLACE_canonical_digest
+    unit: raw_logit
+    value: REPLACE_measured_threshold
+  incremental_gate_enabled: false
+  structure_cadence: every_endpoint
+schedule:
+  active_population_width: 1
+  coordinate_law: progressive_checkpoint
+  depth_cap: 1
+  min_lookahead_tail_steps: 10
+  points:
+  - band_key: step40
+    c_next_step: 60
+    c_source_step: 50
+    depth: 0
+    n_lookaheads: 4
+    r_step: 40
+  schedule_id: sched-1
+schema_version: v2cfg-1
+substrate:
+  amplification_form: constant_one
+  controller_enabled: false
+  n_steps: 100
+  remask_enabled: true
+  remask_fraction_scale: 0.0
+  rf_config_label: v2_null_no_remask
+  temperature: 1.0

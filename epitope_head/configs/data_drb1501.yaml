@@ -1,0 +1,48 @@
+# Epitope Head — Stage A Data Config (DRB1*15:01)
+# Derived from data.yaml; only target_allele and output_subdir differ.
+
+data:
+  # Raw input paths
+  tsv_path: data/mhc_if_v2.tsv
+  fasta_path: data/all_sequences.fasta
+
+  # Allele policy
+  target_allele: "HLA-DRB1*15:01"
+
+  # Per-allele output isolation
+  output_subdir: "drb1501"
+
+  # Peptide length range (frozen)
+  min_k: 12
+  max_k: 25
+
+  # Coordinate convention (frozen)
+  coord_mode: iedb_1b_inclusive
+
+  # Long protein policy
+  max_protein_length: 1022
+
+  # Split config
+  split_seed: 42
+  split_ratios: [0.8, 0.1, 0.1]
+
+  # mmseqs clustering parameters
+  mmseqs_bin: "mmseqs"
+  cluster_identity: 0.90
+  cluster_coverage: 0.80
+  cluster_cov_mode: 2
+
+  # Stage A allele filter profiles
+  stage_a:
+    profile_strict:
+      description: "high_res_single rows with alleles exactly [target_allele]"
+      resolution_filter: "high_res_single"
+      allele_match: "exact_single"
+
+    profile_balanced:
+      description: "strict + deterministic 0.5x sample of multi rows containing target_allele"
+      base: "profile_strict"
+      multi_resolution_filter: "multi"
+      multi_allele_match: "contains_target"
+      multi_ratio: 0.5
+      multi_seed: 42

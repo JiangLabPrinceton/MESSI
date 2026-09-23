@@ -1,0 +1,186 @@
+# V2 state-transition Canary -- PLAN_RF_REFINE_FUSION_V2 §8.3, runbook doc/RF_Fusion_v2_Cluster_Runbook.md
+#
+# Every REPLACE_* below is a value this file CANNOT carry: the loader has no defaults for them and
+# refuses the run rather than inventing one.  Fill them from the artifacts the runbook's steps 1-2
+# produce -- a placeholder left in place fails closed at --print-config, not on the GPU.
+#
+# depth_cap is 1 on purpose: PLAN §8.4 keeps production D>1 launch-disabled until a powered
+# source-transmission gate AND the FeedbackSupportPolicy directionality gate both pass, and the
+# oracle factory never grants the capability flag.
+
+arm:
+  a2_matching_resource: definitive_refolds
+  a2_unmatched_reported:
+  - gpu_seconds
+  - head_calls
+  - logical_dfe
+  - walltime_s
+  arm_role: v2
+  feedback_enabled: true
+caps:
+  max_definitive_refolds: 4000
+  max_gpu_seconds: 86400
+  max_head_calls: 20000
+  max_logical_dfe: 500000
+  max_retries: 2
+  max_walltime_s: 21600
+  retry_scope: per_request
+content:
+- binding: runtime
+  expected_sha256: null
+  label: backbone.bin
+  role: backbone
+- binding: runtime
+  expected_sha256: null
+  label: code_revision.bin
+  role: code_revision
+- binding: runtime
+  expected_sha256: null
+  label: cohort_table.bin
+  role: cohort_table
+- binding: frozen
+  expected_sha256: REPLACE_sha256_of_complete_reference_sequence
+  label: complete_reference_sequence.bin
+  role: complete_reference_sequence
+- binding: runtime
+  expected_sha256: null
+  label: constraint_manifest.bin
+  role: constraint_manifest
+- binding: runtime
+  expected_sha256: null
+  label: coordinate_mask.bin
+  role: coordinate_mask
+- binding: runtime
+  expected_sha256: null
+  label: dplm_checkpoint.bin
+  role: dplm_checkpoint
+- binding: runtime
+  expected_sha256: null
+  label: fixed_token_policy.bin
+  role: fixed_token_policy
+- binding: runtime
+  expected_sha256: null
+  label: head_checkpoint.bin
+  role: head_checkpoint
+- binding: runtime
+  expected_sha256: null
+  label: head_config.bin
+  role: head_config
+- binding: frozen
+  expected_sha256: REPLACE_sha256_of_projection_policy_spec
+  label: projection_policy_spec.bin
+  role: projection_policy_spec
+- binding: runtime
+  expected_sha256: null
+  label: reference_sequences.bin
+  role: reference_sequences
+- binding: runtime
+  expected_sha256: null
+  label: rf_sampler_config.bin
+  role: rf_sampler_config
+- binding: frozen
+  expected_sha256: REPLACE_sha256_of_schedule_band_calibration
+  label: schedule_band_calibration.bin
+  role: schedule_band_calibration
+- binding: runtime
+  expected_sha256: null
+  label: structure_backend.bin
+  role: structure_backend
+- binding: runtime
+  expected_sha256: null
+  label: structure_config.bin
+  role: structure_config
+- binding: runtime
+  expected_sha256: null
+  label: tokenizer.bin
+  role: tokenizer
+- binding: runtime
+  expected_sha256: null
+  label: v0_structure_gate_config.bin
+  role: v0_structure_gate_config
+head:
+  allele: DRB1_0701
+  # raw_logit, NOT nats.  The frozen Head emits UNCALIBRATED classifier logits; absent an explicit
+  # log-probability/calibration transform, calling them nats is scientifically wrong.  The hotspot
+  # threshold is empirically calibrated on this same frozen Head, so a raw-logit unit is legitimate
+  # -- what is not legitimate is a declared unit the evaluator does not produce.  `OnlineHeadScorer`
+  # refuses anything but raw_logit, so a `nats` declaration fails closed at
+  # `bind_admission_policy`'s Head-domain check rather than silently mislabelling the threshold.
+  score_scale: raw_logit
+  # 12-25 is the domain the frozen Head ACTUALLY emits (`epitope_head/configs/inference.yaml`:
+  # min_k 12, max_k 25).  These bounds are metadata: `OnlineHeadScorer` stores them and echoes them
+  # into its cache identity but never enumerates or filters on them, so declaring a narrower domain
+  # does not narrow the grid -- it makes `whole_landscape_new_hotspot` reject EVERY endpoint.  A
+  # declared 13 produced 0-of-N on both Canary proteins.
+  #
+  # One grid for EVERYTHING: V2 calibration, reference scoring and the Canary.  Sharing V1's grid
+  # inherits no THRESHOLD -- the V2 value is re-measured from scratch under runbook §2.1's frozen
+  # law; what may never be inherited is a NUMBER.
+  window_k_max: 25
+  window_k_min: 12
+identity:
+  campaign_id: v2-canary-2026Q3
+  code_revision: REPLACE_WITH_GIT_SHA
+  master_seed: 20260806
+  phase: state_transition_canary
+  seed_schema: v2seed-1
+  split_role: canary
+projection:
+  admissible_mask_load_unit: absolute_positions
+  assimilation_rule: first_forward_raw_logits
+  support_policy_id: state_derived_probe
+  support_policy_is_diagnostic: true
+  support_policy_version: v1
+  temporal_history_rule: commit_before_reentry
+safety:
+  cumulative_reference_kind: native_wt
+  cumulative_reference_label: wt_native
+  # DO NOT HAND-FILL THIS BLOCK.  Every field below is copied VERBATIM from the per-protein
+  # `hotspot_calibration.json` that `scripts/calibrate_rf_fusion_v2_hotspot.py` emits, and the
+  # loader recomputes `source_ref` and refuses an edited one.  `unit` and `artifact.score_scale`
+  # are generated by the producer from the REALIZED Head identity, never typed here.  The values
+  # shown are the shape a resolved config takes, not a threshold: relabelling an old `nats` number
+  # as raw_logit and reusing it would be laundering, not calibration -- the threshold has to be
+  # re-measured on the Head and grid that will enforce it.
+  delta_new_cumulative:
+    artifact:
+      allele: DRB1_0701
+      calibration_data_digest: REPLACE_sha256
+      gate_kind: whole_landscape_new_hotspot
+      reference_kind: native_wt
+      reference_label: wt_native
+      schema_version: v2-hotspot-calibration-1
+      scope: cumulative_depth0
+      score_scale: raw_logit
+      window_domain: whole_landscape
+      window_k_max: 25
+      window_k_min: 12
+    source_id: REPLACE_from_calibration_json
+    source_kind: measured_calibration
+    source_ref: REPLACE_canonical_digest
+    unit: raw_logit
+    value: REPLACE_measured_threshold
+  incremental_gate_enabled: false
+  structure_cadence: every_endpoint
+schedule:
+  active_population_width: 1
+  coordinate_law: progressive_checkpoint
+  depth_cap: 1
+  min_lookahead_tail_steps: 10
+  points:
+  - band_key: step40
+    c_next_step: 60
+    c_source_step: 50
+    depth: 0
+    n_lookaheads: 4
+    r_step: 40
+  schedule_id: sched-1
+schema_version: v2cfg-1
+substrate:
+  amplification_form: constant_one
+  controller_enabled: false
+  n_steps: 100
+  remask_enabled: true
+  remask_fraction_scale: 0.0
+  rf_config_label: v2_null_no_remask
+  temperature: 1.0
