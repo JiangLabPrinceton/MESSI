@@ -1,0 +1,66 @@
+{
+  "bands": [
+    {
+      "combination_rule": "both_axes",
+      "levels": [
+        0.05,
+        0.5,
+        0.95
+      ],
+      "n_attempts": 64,
+      "n_captured": 64,
+      "n_editable_max": 10000,
+      "n_editable_min": 1,
+      "rho_accept": {
+        "hi": 0.4803921568627451,
+        "hi_level": 0.95,
+        "lo": 0.31519607843137254,
+        "lo_level": 0.05
+      },
+      "rho_quantiles": [
+        0.31519607843137254,
+        0.4019607843137255,
+        0.4803921568627451
+      ],
+      "step": 40,
+      "stratum_key": "highrisk_global_unconstrained",
+      "unresolved_accept": {
+        "hi": 10000.0,
+        "hi_level": 0.95,
+        "lo": 1.0,
+        "lo_level": 0.05
+      },
+      "unresolved_quantiles": [
+        6848,
+        5980,
+        5196
+      ]
+    }
+  ],
+  "provenance": {
+    "amplification_form": "constant_one",
+    "attempted_seed_digest": "0c3e88a0f7187f1a6c91eab6a4504c6d25d462702b6314e68778dec3410f93bd",
+    "backbone_digest": "d944c0588ea6bae08fd9d5661d1fdafa238f62657599f132744a89b6edae98df",
+    "base_form": "linear",
+    "calibration_content_digest": "38c81d87cbe037fb2ba68bdd1e346be2373b8f799ef8053af4afdff3a0997f57",
+    "calibration_id": "band:v2:highrisk-global-unconstrained:r40:v1",
+    "calibration_scope": "step_indexed_maturity_band",
+    "code_revision": "c56c661",
+    "cohort_digest": "46dbbce3446af52216450e86a0acdaea77d868b1be850d36bac948b3d9fa1927",
+    "constraint_manifest_digest": "1cee1f2654bd022979bdd047514a92c0b76ba0fe1ee73db9cf4652d0b5060c22",
+    "constraint_stratum_id": "unconstrained",
+    "coordinate_mask_policy_digest": "d470a9ed171ecde654bb8432757becf3560a9b2ed4f1bc21dfd64a4dd9c37d0d",
+    "head_free": true,
+    "n_attempted_seeds": 128,
+    "n_failed_captures": 0,
+    "n_steps": 100,
+    "produced_by": "scripts/rho_maturity_scan.py --mode step",
+    "raw_attempts_digest": "2efb526a997dbe25beb147b0e47d03f25513b436aea2f64f97a1b91c407f9390",
+    "remask_fraction_scale": 0.0,
+    "sampler_config_digest": "79a496768e81c44035759b8121b88baba987282ba3790cb6b395a1d8b304d563",
+    "schema_version": "rf_fusion_v2_schedule_band/1",
+    "seed_schema": "rho-maturity-scan-2",
+    "tokenizer_digest": "tok-3185425172c35710f41041bd4b2ea028"
+  },
+  "schema_version": "rf_fusion_v2_schedule_band/1"
+}

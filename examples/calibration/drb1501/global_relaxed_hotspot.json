@@ -1,0 +1,23 @@
+{
+  "delta_new": {
+    "artifact": {
+      "allele": "DRB1_1501",
+      "calibration_data_digest": "ddcb7e1734b46168b1169baa38a42bbd2db2dcf6c93867dbb1f3680ea1f8d303",
+      "gate_kind": "whole_landscape_new_hotspot",
+      "reference_kind": "native_wt",
+      "reference_label": "wt_native",
+      "schema_version": "v2-hotspot-calibration-1",
+      "scope": "cumulative_depth0",
+      "score_scale": "raw_logit",
+      "window_domain": "whole_landscape",
+      "window_k_max": 25,
+      "window_k_min": 12
+    },
+    "source_id": "uricase-core0-pilot-permissive-hotspot-ceiling-v1",
+    "source_kind": "runbook_frozen",
+    "source_ref": "69fef25fce7c1b851fdea3591395a60fe79ec3f0ea8db69203b56678682a8b4d",
+    "unit": "raw_logit",
+    "value": 1000000.0
+  },
+  "release_source_sha256": "795e516833f90027a4d83787f63e22e9faefed22409d3bc61bf7948e020899f6"
+}

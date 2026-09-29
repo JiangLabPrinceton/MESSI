@@ -21,6 +21,7 @@ All run-specific paths are arguments. No SLURM files are distributed.
 
 | File | Purpose |
 |---|---|
+| `deimmunize.py` (repository root) | Single-structure official generation and selection; one-time local settings |
 | `scripts/run_rf_fusion_v2.py` | Bound Fusion V2 generation and model-free preflight |
 | `scripts/materialize_v2_canary_config.py` | Resolve profile and content identities into a runnable config |
 | `scripts/preflight_v2_canary_assembly.py` | Validate assembled runtime inputs |

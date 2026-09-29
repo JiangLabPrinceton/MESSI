@@ -1,0 +1,23 @@
+{
+  "delta_new": {
+    "artifact": {
+      "allele": "DRB1_0701",
+      "calibration_data_digest": "530b31a9241aeadf3bf313722df335e5fda1871dbbb74f4d957aa7efedf9a4de",
+      "gate_kind": "whole_landscape_new_hotspot",
+      "reference_kind": "native_wt",
+      "reference_label": "wt_native",
+      "schema_version": "v2-hotspot-calibration-1",
+      "scope": "cumulative_depth0",
+      "score_scale": "raw_logit",
+      "window_domain": "whole_landscape",
+      "window_k_max": 25,
+      "window_k_min": 12
+    },
+    "source_id": "highrisk-global-relaxed-hotspot-ceiling-v1",
+    "source_kind": "runbook_frozen",
+    "source_ref": "690df45cb5db1e6d96ce41ecb69cc8bb50568545fe95cfdc829dc1aba952c06d",
+    "unit": "raw_logit",
+    "value": 1000000.0
+  },
+  "release_source_sha256": "679c6f9fa10ab9e380e57a3c2dac5f6b6c61f67d10d8cfab77234aa1e18f85a6"
+}

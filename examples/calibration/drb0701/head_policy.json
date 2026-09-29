@@ -1,0 +1,70 @@
+{
+  "head": {
+    "allele": "DRB1_0701",
+    "head_checkpoint_digest": "144ae7c808e9c69aa9efad523957a16579045017d1f8192bd97720947cbdc163",
+    "head_config_hash": "acb178be390f07c36c054b32e9c8108821523fc7881235b55ee0deed455dcf4c",
+    "schema": "v2state-1",
+    "score_scale": "raw_logit",
+    "window_k_max": 25,
+    "window_k_min": 12
+  },
+  "head_directed": {
+    "band_center_rule": "midpoint_tie_low",
+    "control_policy_id": "source_geometry_control",
+    "control_policy_version": "v1",
+    "donor_improvement_epsilon": {
+      "artifact": {
+        "allele": "DRB1_0701",
+        "calibration_data_digest": "d40d937eb7798bc3ab5c4a038621dc94b84473e3d1b9d9fe1082df2c6258c595",
+        "measurement_kind": "frozen_head_repeatability",
+        "n_observations": 1644,
+        "schema_version": "v2-policy-calibration-1",
+        "score_scale": "raw_logit"
+      },
+      "source_id": "v2f5a-frozen-head-repeatability-difference-bound-v1",
+      "source_kind": "measured_calibration",
+      "source_ref": "70ca8e68a4b7bc3c7727583db34de02d6e4bebb922a8d5e26a8f562c739c620c",
+      "unit": "raw_logit",
+      "value": 1.9073486328125e-06
+    },
+    "lineage_incumbent_depth0_rule": "best_admissible_depth0",
+    "lineage_incumbent_update_law": "strict_improvement_by_epsilon",
+    "local_contribution_tolerance": {
+      "artifact": {
+        "allele": "DRB1_0701",
+        "calibration_data_digest": "d40d937eb7798bc3ab5c4a038621dc94b84473e3d1b9d9fe1082df2c6258c595",
+        "measurement_kind": "frozen_head_repeatability",
+        "n_observations": 1644,
+        "schema_version": "v2-policy-calibration-1",
+        "score_scale": "raw_logit"
+      },
+      "source_id": "v2f5a-local-contribution-repeatability-difference-bound-v1",
+      "source_kind": "measured_calibration",
+      "source_ref": "73d4782a61f6ff408ddf9a14b32d1ee97eb332d519256f483f4cf949a4179d5a",
+      "unit": "raw_logit",
+      "value": 1.9073486328125e-06
+    },
+    "max_counterfactual_head_calls_per_cycle": 483,
+    "reopen_count_law": "u_target_minus_u_src_plus_m_write",
+    "reopen_priority_law": "new_hotspot>worsened>residual_burden>active_uncertainty>temporal_instability>index",
+    "write_candidate_window_rule": "raw_aligned_window_improved_in_donor",
+    "write_cap_editable_fraction": {
+      "artifact": {
+        "allele": "DRB1_0701",
+        "calibration_data_digest": "581ede97d48c7cd5a91b2bbc6c6b456f4aa0ee655cdc4de9f300acbd92c4f487",
+        "measurement_kind": "frozen_declared_fraction",
+        "n_observations": 1,
+        "schema_version": "v2-policy-calibration-1",
+        "score_scale": "raw_logit"
+      },
+      "source_id": "v2f5a-write-cap-0.05-v1",
+      "source_kind": "runbook_frozen",
+      "source_ref": "572b98329d4fd9c7355e907a292888170c9f9e3c1f1a56b8be2fd7b5a4701245",
+      "unit": "editable_fraction",
+      "value": 0.05
+    }
+  },
+  "policy_spec_sha256": "454f3000cea1387c4da1309198083d6fa3809b29dbbbe197f34e31bbfacab53f",
+  "release_source_sha256": "2170263b2c402475c1045f5d4cb3f5392abdcffbf5f25eee0c90b034c08ffc7c",
+  "schema_version": "v2-head-policy-calibration-bundle/1"
+}

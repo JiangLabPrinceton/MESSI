@@ -1,0 +1,7 @@
+{
+  "common": {
+    "structure_backend": "/path/to/ESMFold2/model.safetensors",
+    "esmfold2_model": "/path/to/ESMFold2",
+    "esmfold2_site_packages": "/path/to/esmfold2/lib/python3.12/site-packages"
+  }
+}

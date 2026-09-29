@@ -1,5 +1,9 @@
 # Configuration Scope
 
+For the single-structure entry point use [deimmunize.py](deimmunize.md). It prepares
+references and materializes the official configuration using the bundled original
+calibration blocks; lower-level scripts remain available for explicit experiments.
+
 ## Official MESSI
 
 `examples/messi_official.json` records the realized single-allele official hardset

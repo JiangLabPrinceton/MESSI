@@ -1,0 +1,70 @@
+{
+  "head": {
+    "allele": "DRB1_1501",
+    "head_checkpoint_digest": "1ff54085f2cde1ea0847ebca567af49b2ca85cd23e730d21d515bbb02896136b",
+    "head_config_hash": "acb178be390f07c36c054b32e9c8108821523fc7881235b55ee0deed455dcf4c",
+    "schema": "v2state-1",
+    "score_scale": "raw_logit",
+    "window_k_max": 25,
+    "window_k_min": 12
+  },
+  "head_directed": {
+    "band_center_rule": "midpoint_tie_low",
+    "control_policy_id": "source_geometry_control",
+    "control_policy_version": "v1",
+    "donor_improvement_epsilon": {
+      "artifact": {
+        "allele": "DRB1_1501",
+        "calibration_data_digest": "feea6bab0ae4ecff1cd5d547596886fbf654c4e2a174f1fce00d0e5f5e471c82",
+        "measurement_kind": "frozen_head_repeatability",
+        "n_observations": 6,
+        "schema_version": "v2-policy-calibration-1",
+        "score_scale": "raw_logit"
+      },
+      "source_id": "uricase-core0-pilot-donor-stopping-0.005-v1",
+      "source_kind": "runbook_frozen",
+      "source_ref": "6af86a2b4e8276785c21a8c5b052cd2bcd9b2c6db79a8d51e45f1df44cdeec0a",
+      "unit": "raw_logit",
+      "value": 0.005
+    },
+    "lineage_incumbent_depth0_rule": "best_admissible_depth0",
+    "lineage_incumbent_update_law": "strict_improvement_by_epsilon",
+    "local_contribution_tolerance": {
+      "artifact": {
+        "allele": "DRB1_1501",
+        "calibration_data_digest": "feea6bab0ae4ecff1cd5d547596886fbf654c4e2a174f1fce00d0e5f5e471c82",
+        "measurement_kind": "frozen_head_repeatability",
+        "n_observations": 6,
+        "schema_version": "v2-policy-calibration-1",
+        "score_scale": "raw_logit"
+      },
+      "source_id": "uricase-core0-pilot-local-tolerance-0.017012596130371094-v1",
+      "source_kind": "runbook_frozen",
+      "source_ref": "060bc6a1356bbeca30cc585008949c7a1defec6278278bd89554ed0762eecc7b",
+      "unit": "raw_logit",
+      "value": 0.017012596130371094
+    },
+    "max_counterfactual_head_calls_per_cycle": 486,
+    "reopen_count_law": "u_target_minus_u_src_plus_m_write",
+    "reopen_priority_law": "new_hotspot>worsened>residual_burden>active_uncertainty>temporal_instability>index",
+    "write_candidate_window_rule": "raw_aligned_window_improved_in_donor",
+    "write_cap_editable_fraction": {
+      "artifact": {
+        "allele": "DRB1_1501",
+        "calibration_data_digest": "581ede97d48c7cd5a91b2bbc6c6b456f4aa0ee655cdc4de9f300acbd92c4f487",
+        "measurement_kind": "frozen_declared_fraction",
+        "n_observations": 1,
+        "schema_version": "v2-policy-calibration-1",
+        "score_scale": "raw_logit"
+      },
+      "source_id": "v2f5a-write-cap-0.05-v1",
+      "source_kind": "runbook_frozen",
+      "source_ref": "71b8bd2ee05715b227fb24a10555872dedf63787c66874e04bfa6e56b842f534",
+      "unit": "editable_fraction",
+      "value": 0.05
+    }
+  },
+  "policy_spec_sha256": "454f3000cea1387c4da1309198083d6fa3809b29dbbbe197f34e31bbfacab53f",
+  "release_source_sha256": "255ba3d4d4d380b810e4c62a464091ae999abb2ee5962c971c0958433ecc3f46",
+  "schema_version": "v2-head-policy-calibration-bundle/1"
+}
