@@ -2,7 +2,7 @@
   "schema_version": "messi-release-recipe/1",
   "purpose": "single_allele_unconstrained_official",
   "template": "examples/messi_official.template.yaml",
-  "profile": "highrisk_d4_k12_r40",
+  "profile": "highrisk_d4_k12_relative",
   "substrate": {
     "amplification_form": "constant_one",
     "controller_enabled": false,
@@ -27,31 +27,31 @@
         "r_step": 40
       },
       {
-        "band_key": "step40",
+        "band_key": "step50",
         "c_next_step": 70,
         "c_source_step": 60,
         "depth": 1,
         "n_lookaheads": 12,
-        "r_step": 40
+        "r_step": 50
       },
       {
-        "band_key": "step40",
+        "band_key": "step60",
         "c_next_step": 80,
         "c_source_step": 70,
         "depth": 2,
         "n_lookaheads": 12,
-        "r_step": 40
+        "r_step": 60
       },
       {
-        "band_key": "step40",
+        "band_key": "step70",
         "c_next_step": 90,
         "c_source_step": 80,
         "depth": 3,
         "n_lookaheads": 12,
-        "r_step": 40
+        "r_step": 70
       }
     ],
-    "schedule_id": "highrisk-d4-k12-r40-global-v2"
+    "schedule_id": "highrisk-d4-k12-relative-offset10-v1"
   },
   "structure_gate": {
     "active_site_metric": "none",
@@ -64,7 +64,7 @@
   },
   "alleles": {
     "0701": {
-      "profile": "highrisk_d4_k12_r40",
+      "profile": "highrisk_d4_k12_relative",
       "root_seeds": [
         20260811,
         20260812,
@@ -146,7 +146,7 @@
       }
     },
     "0401": {
-      "profile": "highrisk_d4_k12_r40",
+      "profile": "highrisk_d4_k12_relative",
       "root_seeds": [
         20260811,
         20260812,
@@ -228,7 +228,7 @@
       }
     },
     "1501": {
-      "profile": "highrisk_d4_k12_r40",
+      "profile": "highrisk_d4_k12_relative",
       "root_seeds": [
         20260811,
         20260812,

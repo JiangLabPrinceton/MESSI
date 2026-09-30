@@ -39,6 +39,7 @@ __all__ = [
     "AdmissibleMaskLoad", "BandCenterRule", "BandCenterTarget",
     "history_key", "make_cycle", "make_depth_schedule", "make_band", "make_band_table",
     "bind_band_table", "band_table_content_digest", "band_table_payload", "load_band_table",
+    "assumed_linear_band",
     "lookup_band", "observe_maturity", "gate_projected_maturity", "pinned_unresolved_interval",
     "admissible_reopen_cardinality", "validate_realized_mask_load",
     "band_center_target", "required_reopen_count",
@@ -50,6 +51,7 @@ SCHEDULE_BAND_SCHEMA_VERSION = "rf_fusion_v2_schedule_band/1"
 SCHEDULE_BAND_SCOPE = "step_indexed_maturity_band"
 SCHEDULE_BAND_SEED_SCHEMA = "rho-maturity-scan-2"
 _SCHEDULE_BAND_PRODUCER = "scripts/rho_maturity_scan.py --mode step"
+_LINEAR_BAND_PRODUCER = "fusion_v2.schedule.assumed_linear_r40"
 _CONTENT_DIGEST_RE = re.compile(r"(?:[a-z][a-z0-9_-]*-)?[0-9a-f]{32,64}")
 _CODE_REVISION_RE = re.compile(r"[0-9a-f]{7,64}")
 _PLACEHOLDER_TEXT = frozenset({"unknown", "unset", "none", "null", "placeholder", "na", "n/a"})
@@ -483,7 +485,7 @@ class BandProvenance:
                 f"seed_schema must be {SCHEDULE_BAND_SEED_SCHEMA!r}, got {self.seed_schema!r}"
             )
         _require_code_revision(self.code_revision)
-        if self.produced_by != _SCHEDULE_BAND_PRODUCER:
+        if self.produced_by not in {_SCHEDULE_BAND_PRODUCER, _LINEAR_BAND_PRODUCER}:
             raise V2ScheduleError(
                 f"produced_by must be {_SCHEDULE_BAND_PRODUCER!r}, got {self.produced_by!r}"
             )
@@ -546,13 +548,19 @@ class ScheduleBand:
     n_captured: int
     n_editable_min: int
     n_editable_max: int
+    source_kind: str = "empirical"
 
     def __post_init__(self) -> None:
         _require_index(self.step, "step")
         _require_text(self.stratum_key, "stratum_key")
         _require_text(self.combination_rule, "combination_rule")
-        _require_index(self.n_attempts, "n_attempts", minimum=1)
-        _require_index(self.n_captured, "n_captured", minimum=1)
+        if self.source_kind not in {"empirical", "assumed_linear_shift"}:
+            raise V2ScheduleError("unknown band source_kind")
+        minimum = 1 if self.source_kind == "empirical" else 0
+        _require_index(self.n_attempts, "n_attempts", minimum=minimum)
+        _require_index(self.n_captured, "n_captured", minimum=minimum)
+        if self.source_kind == "assumed_linear_shift" and (self.n_attempts or self.n_captured):
+            raise V2ScheduleError("assumed bands must declare zero measured captures")
         _require_index(self.n_editable_min, "n_editable_min", minimum=1)
         _require_index(self.n_editable_max, "n_editable_max", minimum=1)
         if self.combination_rule != "both_axes":
@@ -606,6 +614,7 @@ def make_band(
     rho_quantiles: Sequence[float], unresolved_quantiles: Sequence[int],
     rho_accept: BandInterval, unresolved_accept: BandInterval, combination_rule: str,
     n_attempts: int, n_captured: int, n_editable_min: int, n_editable_max: int,
+    source_kind: str = "empirical",
 ) -> ScheduleBand:
     """Construct one band from already-computed quantiles. This never estimates a quantile.
 
@@ -622,6 +631,7 @@ def make_band(
         unresolved_accept=unresolved_accept, combination_rule=combination_rule,
         n_attempts=n_attempts, n_captured=n_captured, n_editable_min=n_editable_min,
         n_editable_max=n_editable_max,
+        source_kind=source_kind,
     )
 
 
@@ -657,7 +667,7 @@ def _interval_payload(interval: BandInterval) -> dict[str, float]:
 
 
 def _band_payload(band: ScheduleBand) -> dict[str, Any]:
-    return {
+    payload = {
         "step": band.step,
         "stratum_key": band.stratum_key,
         "levels": list(band.levels.levels),
@@ -671,6 +681,26 @@ def _band_payload(band: ScheduleBand) -> dict[str, Any]:
         "n_editable_min": band.n_editable_min,
         "n_editable_max": band.n_editable_max,
     }
+    if band.source_kind != "empirical":
+        payload["source_kind"] = band.source_kind
+    return payload
+
+
+def assumed_linear_band(base: ScheduleBand, step: int, n_steps: int) -> ScheduleBand:
+    """Translate the measured r40 maturity band under an explicitly assumed linear clock."""
+    _require_index(n_steps, "n_steps", minimum=1)
+    _require_index(step, "step")
+    if base.step != 40 or base.source_kind != "empirical" or step == base.step or step >= n_steps:
+        raise V2ScheduleError("linear assumption requires empirical r40 and a distinct pre-terminal step")
+    shift = (step - base.step) / n_steps
+    return replace(
+        base, step=step, source_kind="assumed_linear_shift", n_attempts=0, n_captured=0,
+        rho_quantiles=tuple(v + shift for v in base.rho_quantiles),
+        rho_accept=replace(base.rho_accept, lo=base.rho_accept.lo + shift,
+                           hi=base.rho_accept.hi + shift),
+        unresolved_quantiles=tuple(round(v - shift * base.n_editable_max)
+                                  for v in base.unresolved_quantiles),
+    )
 
 
 def band_table_content_digest(
@@ -706,6 +736,18 @@ def _validate_band_table(
     canonical_order = tuple(sorted(ordered, key=lambda band: (band.step, band.stratum_key)))
     if ordered != canonical_order:
         raise V2ScheduleError("bands must be ordered canonically by (step, stratum_key)")
+    assumed = provenance.produced_by == _LINEAR_BAND_PRODUCER
+    if assumed:
+        anchors = {b.stratum_key: b for b in ordered
+                   if b.step == 40 and b.source_kind == "empirical"}
+        for band in ordered:
+            if band.source_kind == "empirical":
+                continue
+            base = anchors.get(band.stratum_key)
+            if base is None or band != assumed_linear_band(base, band.step, provenance.n_steps):
+                raise V2ScheduleError("assumed band disagrees with its empirical r40 translation")
+    elif any(b.source_kind != "empirical" for b in ordered):
+        raise V2ScheduleError("assumed bands require an explicitly assumed producer")
     seen: set[tuple[int, str]] = set()
     for band in ordered:
         if not isinstance(band, ScheduleBand):
@@ -786,7 +828,7 @@ def _load_band(value: object, index: int) -> ScheduleBand:
     if not isinstance(value, Mapping):
         raise V2ScheduleError(f"{path} must be a mapping")
     expected = {field.name for field in fields(ScheduleBand)}
-    _require_exact_keys(value, expected, path)
+    _require_exact_keys(value, expected if "source_kind" in value else expected - {"source_kind"}, path)
     try:
         return make_band(
             step=value["step"],
@@ -803,6 +845,7 @@ def _load_band(value: object, index: int) -> ScheduleBand:
             n_captured=value["n_captured"],
             n_editable_min=value["n_editable_min"],
             n_editable_max=value["n_editable_max"],
+            source_kind=value.get("source_kind", "empirical"),
         )
     except (TypeError, ValueError) as exc:
         raise V2ScheduleError(f"invalid {path}: {exc}") from exc

@@ -6,19 +6,24 @@ calibration blocks; lower-level scripts remain available for explicit experiment
 
 ## Official MESSI
 
-`examples/messi_official.json` records the realized single-allele official hardset
-recipe, independently of the constrained uricase family experiment. It is a
+`examples/messi_official.json` records the standard single-allele configuration,
+using the original official policy blocks and checkpoint-relative re-entry. It is a
 parameter/provenance reference, not a resolved runtime config.
 
 Use `examples/messi_official.template.yaml` with the existing materializer and
-`--exploratory-profile highrisk_d4_k12_r40 --run-max-head-calls 6000`.
+`--exploratory-profile highrisk_d4_k12_relative --run-max-head-calls 6000`.
+Re-entry is `r = c_source - reentry_offset`; `--reentry-offset` defaults to 10
+for this profile and can be changed. Supply measured per-step bands when available;
+missing steps are explicitly assumed linear translations of empirical B40, with
+zero claimed observations, written to the resolved config's companion band JSON.
+The legacy `highrisk_d4_k12_r40` profile remains available for archived-run reproduction.
 The template intentionally has unresolved content bindings: supply the cohort,
 references, model files, measured schedule bands, allele-bound policy/hotspot
 artifacts and structure configuration through the materializer. Never substitute
 dummy digests. The official template retains the actual zero-retry setting; the
 older canary template's two retries do not reproduce this campaign.
 
-The common search is D4/K12/r40, 100 steps, temperature 1, checkpoints
+The common search is D4/K12 with relative re-entry, 100 steps, temperature 1, checkpoints
 50/60/70/80/90, four seeds 20260811-20260814 and scTM >= 0.70. Official selection
 returns up to eight designs per protein from the complete feasible archive.
 

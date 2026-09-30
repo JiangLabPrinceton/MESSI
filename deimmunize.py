@@ -58,6 +58,8 @@ def build_parser():
                         help='four distinct nonnegative root seeds')
     parser.add_argument('--dry-run', action='store_true',
                         help='prepare and validate every root without loading models')
+    parser.add_argument('--reentry-offset', type=positive_int, default=10,
+                        help='re-enter this many steps before each source checkpoint')
     advanced = parser.add_argument_group('installation overrides (otherwise read from settings)')
     for name in PATH_OPTIONS:
         advanced.add_argument('--' + name.replace('_', '-'), type=Path)
@@ -199,7 +201,8 @@ def prepare_commands(args, settings, target, backbone):
         head_variant_id='LC1', structure_config=gate, v0_structure_gate_config=gate,
         rf_sampler_config=str(ROOT / 'inverse_folding/reference_flow/configs/c1_constant_clean_no_remask.yaml'),
         cohort_table=str(target / 'cohort.parquet'), backbone=str(backbone), pdb_root=str(target),
-        exploratory_profile=recipe['profile'], run_max_head_calls=6000,
+        exploratory_profile=recipe['profile'], reentry_offset=args.reentry_offset,
+        run_max_head_calls=6000,
         esmfold2_num_loops=3, esmfold2_num_sampling_steps=50, esmfold2_num_diffusion_samples=1,
         esmfold2_seed=0, campaign_id='deimmunize-' + args.out_dir.name)
     if args.constraint_manifest:

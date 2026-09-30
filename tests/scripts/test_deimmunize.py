@@ -48,6 +48,8 @@ def test_defaults_and_lightweight_help(tmp_path):
     args = args_for(tmp_path)
     assert args.allele == 'DRB1_1501' and args.num_designs == 8
     assert args.master_seeds == [20260811, 20260812, 20260813, 20260814]
+    assert args.reentry_offset == 10
+    assert args_for(tmp_path, '--reentry-offset', '5').reentry_offset == 5
     assert entry.allele_name('HLA-DRB1_15_01') == args.allele
     script = "import deimmunize,sys; assert 'torch' not in sys.modules; deimmunize.build_parser().parse_args(['--help'])"
     result = subprocess.run([sys.executable, '-S', '-c', script], cwd=entry.ROOT, capture_output=True)

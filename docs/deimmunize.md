@@ -5,6 +5,10 @@ roots serially, and selects up to the requested number of unique feasible design
 It reuses the existing materializer, driver and guarded official selector. It does
 not run refinement, NetMHCIIpan, automatic calibration or extra roots to fill a quota.
 
+Re-entry follows each source checkpoint: `r = c_source - reentry_offset`.
+Use `--reentry-offset` to set the rollback distance (default 10). Missing per-step
+bands are recorded as linear assumptions from empirical B40, not measured calibration.
+
 ## One-Time Setup
 
 Install the [generation dependencies and ESMFold2 worker](installation.md) and

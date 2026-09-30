@@ -73,6 +73,40 @@ def _observation(n_editable=220, n_unresolved=130):
     )
 
 
+def test_assumed_linear_ladder_roundtrip_and_legacy_identity(tmp_path):
+    base = _band(n_editable_min=1, n_editable_max=10000,
+                 unresolved_quantiles=(6848, 5980, 5196),
+                 unresolved_accept=sch.BandInterval(1, 10000, 0.1, 0.9))
+    legacy = sch.make_band_table(provenance=_provenance(), bands=(base,))
+    assert "source_kind" not in sch.band_table_payload(legacy)["bands"][0]
+    bands = (base,) + tuple(sch.assumed_linear_band(base, s, 100) for s in (50, 60, 70))
+    table = sch.make_band_table(provenance=_provenance(
+        produced_by="fusion_v2.schedule.assumed_linear_r40"), bands=bands)
+    path = tmp_path / "assumed.json"
+    path.write_text(json.dumps(sch.band_table_payload(table)))
+    assert sch.load_band_table(path) == table
+    assert table.bands[1].rho_accept.lo == pytest.approx(base.rho_accept.lo + 0.1)
+    assert table.bands[3].n_captured == 0
+    assert table.bands[0] == legacy.bands[0]
+
+
+def test_assumed_linear_band_rejects_fabricated_measurements_and_wrong_translation():
+    base = _band(n_editable_min=1, n_editable_max=10000,
+                 unresolved_quantiles=(6848, 5980, 5196),
+                 unresolved_accept=sch.BandInterval(1, 10000, 0.1, 0.9))
+    shifted = sch.assumed_linear_band(base, 50, 100)
+    with pytest.raises(sch.V2ScheduleError):
+        dataclasses.replace(shifted, n_attempts=64, n_captured=64)
+    bad = dataclasses.replace(shifted, rho_accept=sch.BandInterval(0.1, 0.2, 0.1, 0.9))
+    with pytest.raises(sch.V2ScheduleError):
+        sch.make_band_table(provenance=_provenance(
+            produced_by="fusion_v2.schedule.assumed_linear_r40"), bands=(
+                base, bad, sch.assumed_linear_band(base, 60, 100),
+                sch.assumed_linear_band(base, 70, 100)))
+    with pytest.raises(sch.V2ScheduleError):
+        sch.make_band_table(provenance=_provenance(), bands=(base, shifted))
+
+
 # --------------------------------------------------------------------------------------------
 # Step 5 - cycle coordinates
 # --------------------------------------------------------------------------------------------

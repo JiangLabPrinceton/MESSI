@@ -5,6 +5,7 @@ from __future__ import annotations
 import hashlib
 import json
 import types
+from pathlib import Path
 
 import pytest
 
@@ -79,6 +80,43 @@ def _replace_calibrated_value(block, key, value):
         source_id=scalar["source_id"],
         artifact=PolicyCalibrationArtifact(**scalar["artifact"]),
     )
+
+
+@pytest.mark.parametrize("offset,steps", [(None,[40,50,60,70]), (5,[45,55,65,75]), (15,[35,45,55,65])])
+def test_relative_reentry_schedule_and_bound_bands(tmp_path, offset, steps):
+    from scripts.materialize_v2_canary_config import _relative_schedule, _resolve_relative_bands
+    from inverse_folding.reference_flow.fusion_v2 import schedule as sch
+    from tests.inverse_folding.test_fusion_v2_schedule import _band, _provenance
+    source = sch.make_band_table(provenance=_provenance(), bands=(_band(
+        n_editable_min=1, n_editable_max=10000,
+        unresolved_quantiles=(6848,5980,5196),
+        unresolved_accept=sch.BandInterval(1,10000,0.1,0.9)),))
+    path = tmp_path / "source.json"
+    path.write_text(json.dumps(sch.band_table_payload(source)))
+    args = types.SimpleNamespace(exploratory_profile="highrisk_d4_k12_relative",
+        reentry_offset=offset, band_json=str(path), stratum_key=source.bands[0].stratum_key,
+        code_revision="deadbeef", out=str(tmp_path / "resolved.yaml"))
+    schedule = _relative_schedule(args)
+    assert [p["r_step"] for p in schedule["points"]] == steps
+    assert all(p["band_key"] == f"step{p['r_step']}" for p in schedule["points"])
+    _resolve_relative_bands(args)
+    table = sch.load_band_table(args.band_json)
+    assert source.bands[0] in table.bands
+    assert set(steps) <= {b.step for b in table.bands}
+    assert all(b.n_captured == 0 for b in table.bands if b.source_kind != "empirical")
+    bound = Path(args.band_json).read_bytes()
+    _resolve_relative_bands(args)
+    assert Path(args.band_json).read_bytes() == bound
+    assert path.read_text() == json.dumps(sch.band_table_payload(source))
+    config = _mapping(**{"schedule": schedule})
+    assert project_v2_budget(load_v2_config(config), n_proteins=1).total_logical_dfe == 1890 + 4 * (10 if offset is None else offset)
+
+
+@pytest.mark.parametrize("offset", [0, -5, 51, True])
+def test_relative_reentry_rejects_invalid_offsets(offset):
+    from scripts.materialize_v2_canary_config import _relative_schedule
+    with pytest.raises(MaterializeError):
+        _relative_schedule(types.SimpleNamespace(reentry_offset=offset))
 
 
 def test_policy_qualification_materialization_copies_only_a_matching_calibration(tmp_path):
@@ -202,6 +240,11 @@ def test_highrisk_d4_k24_profile_changes_only_breadth_identity_and_caps(tmp_path
 
     args.exploratory_profile = "highrisk_d4_k12_r40"
     inherited = fill_config(template, args=args, frozen=frozen, runtime={})
+    args.exploratory_profile = "highrisk_d4_k12_relative"
+    relative = fill_config(template, args=args, frozen=frozen, runtime={})
+    assert [p["r_step"] for p in relative["schedule"]["points"]] == [40,50,60,70]
+    assert {k:v for k,v in relative.items() if k != "schedule"} == {
+        k:v for k,v in inherited.items() if k != "schedule"}
     args.exploratory_profile = "highrisk_d4_k24_r40"
     config = fill_config(template, args=args, frozen=frozen, runtime={})
 

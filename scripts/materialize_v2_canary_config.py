@@ -204,8 +204,55 @@ EXPLORATORY_PROFILES: dict[str, dict[str, Any]] = {
 }
 
 
+EXPLORATORY_PROFILES["highrisk_d4_k12_relative"] = json.loads(json.dumps(
+    EXPLORATORY_PROFILES["highrisk_d4_k12_r40"]))
+
+
 class MaterializeError(RuntimeError):
     """A resolved config this producer refuses to write."""
+
+
+def _relative_schedule(args) -> dict:
+    offset = getattr(args, "reentry_offset", None)
+    offset = 10 if offset is None else offset
+    if isinstance(offset, bool) or not isinstance(offset, int) or not 1 <= offset <= 50:
+        raise MaterializeError("--reentry-offset must be an integer from 1 to 50")
+    schedule = json.loads(json.dumps(EXPLORATORY_PROFILES["highrisk_d4_k12_relative"]["schedule"]))
+    schedule["schedule_id"] = f"highrisk-d4-k12-relative-offset{offset}-v1"
+    for point in schedule["points"]:
+        point["r_step"] = point["c_source_step"] - offset
+        point["band_key"] = f"step{point['r_step']}"
+    return schedule
+
+
+def _resolve_relative_bands(args) -> None:
+    if getattr(args, "exploratory_profile", None) != "highrisk_d4_k12_relative":
+        return
+    from dataclasses import replace
+    from inverse_folding.reference_flow.fusion_v2.schedule import (
+        assumed_linear_band, band_table_payload, load_band_table, make_band_table,
+    )
+    source = load_band_table(args.band_json)
+    bands = list(source.bands)
+    anchors = [b for b in bands if b.step == 40 and b.stratum_key == args.stratum_key
+               and b.source_kind == "empirical"]
+    for point in _relative_schedule(args)["points"]:
+        step = point["r_step"]
+        if any(b.step == step and b.stratum_key == args.stratum_key for b in bands):
+            continue
+        if len(anchors) != 1:
+            raise MaterializeError("relative re-entry needs per-step bands or one empirical r40 anchor")
+        bands.append(assumed_linear_band(anchors[0], step, source.provenance.n_steps))
+    if tuple(bands) == source.bands:
+        return
+    table = make_band_table(provenance=replace(source.provenance,
+        produced_by="fusion_v2.schedule.assumed_linear_r40",
+        calibration_id=source.provenance.calibration_id + "-relative-linear",
+        code_revision=args.code_revision), bands=bands)
+    path = Path(args.out).with_suffix(".bands.json")
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(band_table_payload(table), indent=2) + "\n")
+    args.band_json = str(path)
 
 
 def file_digest(path: Any) -> str:
@@ -360,7 +407,11 @@ def resolve_content_bindings(
     can express -- the Head config is a DIRECTORY rolling-hash, the band is a table digest rather
     than a file digest, and an unconstrained cell's constraint manifest is a typed absence.
     """
+    _resolve_relative_bands(args)
     constrained = bool(args.constraint_manifest)
+    band_step = (_relative_schedule(args)["points"][0]["r_step"]
+                 if getattr(args, "exploratory_profile", None) == "highrisk_d4_k12_relative"
+                 else int(args.r_step))
     frozen: dict[str, str] = {
         "code_revision": str(args.code_revision),
         # THIS protein's canonical sequence file, not the manifest that resolves it.  A Canary cell
@@ -372,7 +423,7 @@ def resolve_content_bindings(
         "complete_reference_sequence": file_digest(args.reference_sequence),
         "projection_policy_spec": file_digest(args.projection_policy_spec),
         "schedule_band_calibration": _band_content_digest(
-            args.band_json, r_step=int(args.r_step), stratum_key=str(args.stratum_key)),
+            args.band_json, r_step=band_step, stratum_key=str(args.stratum_key)),
         "head_config": head_config_hash(args.head_config_dir),
         "head_checkpoint": file_digest(args.head_checkpoint),
     }
@@ -428,6 +479,8 @@ def fill_config(template: dict, *, args, frozen: dict, runtime: dict) -> dict:
         config["identity"]["master_seed"] = int(master_seed)
 
     profile_name = getattr(args, "exploratory_profile", None)
+    if getattr(args, "reentry_offset", None) is not None and profile_name != "highrisk_d4_k12_relative":
+        raise MaterializeError("--reentry-offset requires --exploratory-profile highrisk_d4_k12_relative")
     profile = EXPLORATORY_PROFILES.get(profile_name) if profile_name else None
     if profile_name and profile is None:
         raise MaterializeError(
@@ -442,7 +495,7 @@ def fill_config(template: dict, *, args, frozen: dict, runtime: dict) -> dict:
         )
     if profile is not None:
         _structure_runtime_protocol(args)
-        if int(args.r_step) != 40:
+        if profile_name != "highrisk_d4_k12_relative" and int(args.r_step) != 40:
             raise MaterializeError(
                 f"exploratory profile {profile_name!r} requires --r-step 40, got {args.r_step}; "
                 "every depth is bound to the declared B(40) cell"
@@ -547,7 +600,8 @@ def fill_config(template: dict, *, args, frozen: dict, runtime: dict) -> dict:
         config["caps"]["max_head_calls"] = int(head_cap)
 
     if profile is not None:
-        config["schedule"] = json.loads(json.dumps(profile["schedule"]))
+        config["schedule"] = (_relative_schedule(args) if profile_name == "highrisk_d4_k12_relative"
+                              else json.loads(json.dumps(profile["schedule"])))
         config["caps"].update(json.loads(json.dumps(profile["caps"])))
     else:
         points = config["schedule"]["points"]
@@ -792,6 +846,8 @@ def build_parser() -> argparse.ArgumentParser:
         help="generic whole-run Head hard cap required by an exploratory profile. It is not a "
              "qualification-arm cap and is rejected unless --exploratory-profile is supplied",
     )
+    parser.add_argument("--reentry-offset", type=int, default=None,
+                        help="relative profile: r = source checkpoint minus this offset (default 10)")
     parser.add_argument("--esmfold2-model", default=None,
                         help="actual ESMFold2 model selector; required by an exploratory profile")
     parser.add_argument("--esmfold2-num-loops", type=int, default=None)
