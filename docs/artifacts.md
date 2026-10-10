@@ -1,11 +1,28 @@
 # Model And Configuration Artifacts
 
-The official source repository is [JiangLabPrinceton/MESSI](https://github.com/JiangLabPrinceton/MESSI).
-The unchanged 0.0.1 model packages are currently available from the
-[original 0.0.1 release](https://github.com/JazZyzJ/Immune-Design/releases/tag/0.0.1).
-The Git tag has been preserved during migration; Release attachments are not
-copied by a Git push. Use that download location until the packages are mirrored
-to this repository. Verify downloads against the manifests below.
+Download model packages from the official
+[MESSI 0.0.1 Release](https://github.com/JiangLabPrinceton/MESSI/releases/tag/0.0.1).
+The files and SHA-256 checksums are unchanged from the original distribution.
+
+From the repository root:
+
+```bash
+curl -fLO https://github.com/JiangLabPrinceton/MESSI/releases/download/0.0.1/head-weights.tar.gz
+curl -fLO https://github.com/JiangLabPrinceton/MESSI/releases/download/0.0.1/dplm-inference.tar.part00
+curl -fLO https://github.com/JiangLabPrinceton/MESSI/releases/download/0.0.1/dplm-inference.tar.part01
+curl -fLO https://github.com/JiangLabPrinceton/MESSI/releases/download/0.0.1/dplm-inference.tar.part02
+curl -fLO https://github.com/JiangLabPrinceton/MESSI/releases/download/0.0.1/head-assets.json
+curl -fLO https://github.com/JiangLabPrinceton/MESSI/releases/download/0.0.1/dplm-assets.json
+curl -fLO https://github.com/JiangLabPrinceton/MESSI/releases/download/0.0.1/SHA256SUMS
+sha256sum -c SHA256SUMS
+tar -xzf head-weights.tar.gz
+cat dplm-inference.tar.part00 dplm-inference.tar.part01 dplm-inference.tar.part02 | tar -xf -
+```
+
+Extract only after all checksums pass. The Release also provides
+[`head-assets.json`](https://github.com/JiangLabPrinceton/MESSI/releases/download/0.0.1/head-assets.json)
+and [`dplm-assets.json`](https://github.com/JiangLabPrinceton/MESSI/releases/download/0.0.1/dplm-assets.json)
+with the individual checkpoint and configuration identities.
 
 Production Head weights are distributed separately from source. The release
 asset `head-weights.tar.gz` contains `weights/` and `head-assets.json`. Verify
